@@ -10,6 +10,10 @@ from department_app.views import DepartmentViewSet
 from organization_address_app.views import OrganizationAddressViewSet
 from field_supervisor_app.views import FieldSupervisorProfileViewSet
 from student_profile_app.views import StudentProfileViewSet
+from alumni_profile_app.views import AlumniProfileViewSet
+from staff_profile_app.views import StaffProfileViewSet
+from field_post_app.views import FieldPostViewSet
+from internship_post_app.views import InternshipPostViewSet
 
 router = routers.DefaultRouter()
 router.register('users', UsersViewSet, 'users')
@@ -23,5 +27,9 @@ router.register('organizations', OrganizationViewSet, 'organizations')
 router.register('organization_address', OrganizationAddressViewSet, 'organization_address')
 router.register('field_supervisors_profiles', FieldSupervisorProfileViewSet, 'field_supervisors_profiles')
 router.register('students_profiles', StudentProfileViewSet, 'students_profiles')
+router.register('alumni_profiles', AlumniProfileViewSet, 'alumni_profiles')
+router.register('staffs_profiles', StaffProfileViewSet, 'staffs_profiles')
+router.register('field_posts', FieldPostViewSet, 'field_posts')
+router.register('internship_posts', InternshipPostViewSet, 'internship_posts')
 
 urlpatterns = router.urls
