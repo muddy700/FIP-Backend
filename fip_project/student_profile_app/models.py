@@ -14,13 +14,13 @@ class StudentProfile(models.Model):
     field_supervisor_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="field_supervisor")
     department_id = models.ForeignKey(Department, on_delete=models.CASCADE)
     academic_supervisor_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="academic_supervisor")
-    profession_id = models.ForeignKey(Profession, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.student_id
 
-# class StudentProfession(models.Model):
-#     student_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="student_id")
+class StudentProfession(models.Model):
+    student_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="student_profession_id")
+    profession_id = models.ForeignKey(Profession, on_delete=models.CASCADE)
 
-#     def __str__(self):
-#         return self.student_id
+    def __str__(self):
+        return self.student_id 

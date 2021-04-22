@@ -1,4 +1,4 @@
-from .models import StudentProfile
+from .models import StudentProfile, StudentProfession
 from rest_framework import serializers
 
 class StudentProfileSerializer(serializers.ModelSerializer):
@@ -10,4 +10,12 @@ class StudentProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = StudentProfile
+        fields = '__all__'
+
+class StudentProfessionSerializer(serializers.ModelSerializer):
+    registration_number = serializers.CharField(source="student_id.username", read_only=True)
+    profession_name = serializers.CharField(source="profession_id.profession_name", read_only=True)
+
+    class Meta:
+        model = StudentProfession
         fields = '__all__'

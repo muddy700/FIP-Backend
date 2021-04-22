@@ -9,11 +9,11 @@ from certificate_app.views import CertificateViewSet
 from department_app.views import DepartmentViewSet
 from organization_address_app.views import OrganizationAddressViewSet
 from field_supervisor_app.views import FieldSupervisorProfileViewSet
-from student_profile_app.views import StudentProfileViewSet
-from alumni_profile_app.views import AlumniProfileViewSet
+from student_profile_app.views import StudentProfileViewSet, StudentProfessionViewSet
+from alumni_profile_app.views import AlumniProfileViewSet, AlumniProfessionViewSet
 from staff_profile_app.views import StaffProfileViewSet
-from field_post_app.views import FieldPostViewSet
-from internship_post_app.views import InternshipPostViewSet
+from field_post_app.views import FieldPostViewSet, FieldApplicationViewSet, FieldPostProfessionViewSet
+from internship_post_app.views import InternshipPostViewSet, InternshipPostProfessionViewSet, InternshipApplicationViewSet
 
 router = routers.DefaultRouter()
 router.register('users', UsersViewSet, 'users')
@@ -27,9 +27,15 @@ router.register('organizations', OrganizationViewSet, 'organizations')
 router.register('organization_address', OrganizationAddressViewSet, 'organization_address')
 router.register('field_supervisors_profiles', FieldSupervisorProfileViewSet, 'field_supervisors_profiles')
 router.register('students_profiles', StudentProfileViewSet, 'students_profiles')
+router.register('students_professions', StudentProfessionViewSet, 'students_professions')
 router.register('alumni_profiles', AlumniProfileViewSet, 'alumni_profiles')
+router.register('alumni_professions', AlumniProfessionViewSet, 'alumni_professions')
 router.register('staffs_profiles', StaffProfileViewSet, 'staffs_profiles')
 router.register('field_posts', FieldPostViewSet, 'field_posts')
+router.register('field_post_professions', FieldPostProfessionViewSet, 'field_post_professions')
+router.register('field_applications', FieldApplicationViewSet, 'field_applications')
 router.register('internship_posts', InternshipPostViewSet, 'internship_posts')
+router.register('internship_applications', InternshipApplicationViewSet, 'internship_applications')
+router.register('internship_post_professions', InternshipPostProfessionViewSet, 'internship_post_professions')
 
 urlpatterns = router.urls
