@@ -6,7 +6,7 @@ from organization_app.models import Organization
 
 class InternshipPost(models.Model):
     post_name = models.CharField(max_length=100)
-    organization_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
     post_capacity = models.IntegerField()
     post_description = models.CharField(max_length=300)
     date_created = models.DateTimeField(auto_now_add=True)

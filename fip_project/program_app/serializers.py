@@ -2,7 +2,7 @@ from .models import Program
 from rest_framework import serializers
 
 class ProgramSerializer(serializers.ModelSerializer):
-    department_name = serializers.CharField(source="department.name", read_only=True)
+    department_name = serializers.CharField(source="department_id.department_name", read_only=True)
 
     class Meta:
         model = Program

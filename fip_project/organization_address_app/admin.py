@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import OrganizationAddress
+from .models import OrganizationProfile
 
-admin.site.register(OrganizationAddress)
+admin.site.register(OrganizationProfile)

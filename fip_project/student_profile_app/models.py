@@ -10,6 +10,7 @@ class StudentProfile(models.Model):
     year_of_study = models.CharField(max_length=100)
     program_id = models.ForeignKey(Program, on_delete=models.CASCADE)
     student_id = models.OneToOneField(User, on_delete=models.CASCADE, related_name="student_id")
+    organization_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="organization_id")
     profile_image = models.ImageField(upload_to='images/', blank=True)
     field_supervisor_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="field_supervisor")
     department_id = models.ForeignKey(Department, on_delete=models.CASCADE)

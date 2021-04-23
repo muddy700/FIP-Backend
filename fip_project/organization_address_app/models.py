@@ -1,11 +1,11 @@
 from django.db import models
-from organization_app.models import Organization
+from django.contrib.auth.models import User
 
-class OrganizationAddress(models.Model):
-    organization_id = models.OneToOneField(Organization, on_delete=models.CASCADE)
-    organization_phone_number = models.CharField(max_length=100)
-    organization_email = models.CharField(max_length=100)
-    organization_box_address = models.CharField(max_length=100)
+class OrganizationProfile(models.Model):
+    organization_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_image = models.ImageField(upload_to='images/', blank=True)
+    phone_number = models.CharField(max_length=100)
+    box_address = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.organization_email
+        return self.organization_id.username

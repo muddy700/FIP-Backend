@@ -2,7 +2,7 @@ from .models import Department
 from rest_framework import serializers
 
 class DepartmentSerializer(serializers.ModelSerializer):
-    hod_name = serializers.CharField(source="hod.username", read_only=True)
+    hod_name = serializers.CharField(source="department_hod.username", read_only=True)
 
     class Meta:
         model = Department

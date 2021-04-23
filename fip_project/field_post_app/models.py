@@ -1,12 +1,11 @@
 from program_app.models import Program
 from django.db import models
 from profession_app.models import Profession
-from organization_app.models import Organization
 from django.contrib.auth.models import User
 
 class FieldPost(models.Model):
     post_name = models.CharField(max_length=100)
-    organization_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
     post_capacity = models.IntegerField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)

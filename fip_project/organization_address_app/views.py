@@ -1,12 +1,12 @@
 from rest_framework import generics, permissions, viewsets
-from .models import OrganizationAddress
-from .serializers import OrganizationAddressSerializer
+from .models import OrganizationProfile
+from .serializers import OrganizationProfileSerializer
 
-class OrganizationAddressViewSet(viewsets.ModelViewSet):
-    queryset = OrganizationAddress.objects.all()
+class OrganizationProfileViewSet(viewsets.ModelViewSet):
+    queryset = OrganizationProfile.objects.all()
     permission_classes = [
         permissions.IsAuthenticated,
     ]
-    serializer_class = OrganizationAddressSerializer
+    serializer_class = OrganizationProfileSerializer
 
    

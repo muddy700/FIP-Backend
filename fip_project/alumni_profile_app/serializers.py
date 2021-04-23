@@ -6,6 +6,7 @@ class AlumniProfileSerializer(serializers.ModelSerializer):
     degree_program = serializers.CharField(source="program_id.program_name", read_only=True)
     department_name = serializers.CharField(source="department_id.department_name", read_only=True)
     profession_name = serializers.CharField(source="profession_id.profession_name", read_only=True)
+    organization_name = serializers.CharField(source="organization_id.username", read_only=True)
 
     class Meta:
         model = AlumniProfile
