@@ -17,11 +17,11 @@ class StudentProfile(models.Model):
     academic_supervisor_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="academic_supervisor")
 
     def __str__(self):
-        return self.student_id
+        return f'{self.student_id.username } Profile'
 
 class StudentProfession(models.Model):
     student_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="student_profession_id")
     profession_id = models.ForeignKey(Profession, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.student_id 
+        return f'{self.student_id.username } Profession' 

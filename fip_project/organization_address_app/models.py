@@ -8,4 +8,4 @@ class OrganizationProfile(models.Model):
     box_address = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.organization_id.username
+        return f'{self.organization_id.username } Profile'

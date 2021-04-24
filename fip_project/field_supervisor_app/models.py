@@ -11,4 +11,4 @@ class FieldSupervisorProfile(models.Model):
     designation_id = models.ForeignKey(Designation, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.phone_number
+        return f'{self.supervisor_id.username } Profile'

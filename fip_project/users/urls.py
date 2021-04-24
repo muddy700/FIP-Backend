@@ -4,7 +4,6 @@ from designation.views import DesignationViewSet
 from program_app.views import ProgramViewSet
 from project_app.views import ProjectViewSet, ProjectMemberViewSet
 from profession_app.views import ProfessionViewSet
-from organization_app.views import OrganizationViewSet
 from certificate_app.views import CertificateViewSet
 from department_app.views import DepartmentViewSet
 from organization_address_app.views import OrganizationProfileViewSet
@@ -24,7 +23,6 @@ router.register('projects', ProjectViewSet, 'projects')
 router.register('projects_members', ProjectMemberViewSet, 'projects_members')
 router.register('certificates', CertificateViewSet, 'certificates')
 router.register('professions', ProfessionViewSet, 'professions')
-router.register('organizations', OrganizationViewSet, 'organizations')
 router.register('organization_profile', OrganizationProfileViewSet, 'organization_profile')
 router.register('field_supervisors_profiles', FieldSupervisorProfileViewSet, 'field_supervisors_profiles')
 router.register('students_profiles', StudentProfileViewSet, 'students_profiles')

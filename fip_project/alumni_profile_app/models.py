@@ -15,11 +15,11 @@ class AlumniProfile(models.Model):
     organization_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_organization_id")
 
     def __str__(self):
-        return self.alumni_id
+        return f'{self.alumni_id.username} Profile'
 
 class AlumniProfession(models.Model):
     alumni_id    = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_profession_id")
     profession_id = models.ForeignKey(Profession, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.alumni_id
+        return f'{self.alumni_id.username} Profession'

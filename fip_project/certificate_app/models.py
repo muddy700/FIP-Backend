@@ -8,4 +8,4 @@ class Certificate(models.Model):
     certificate_file = models.FileField(upload_to='raw/', blank=True, storage=RawMediaCloudinaryStorage())
 
     def __str__(self):
-        return self.certificate_name
+        return f'{self.certificate_owner.username}  Certificate'

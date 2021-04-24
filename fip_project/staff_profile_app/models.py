@@ -11,4 +11,4 @@ class StaffProfile(models.Model):
     staff_id = models.OneToOneField(User, on_delete=models.CASCADE, related_name="staff_id")
 
     def __str__(self):
-        return self.staff_id
+        return f'{self.staff_id.username } Profile'
