@@ -8,13 +8,13 @@ class StudentProfile(models.Model):
     student_status = models.BooleanField()
     phone_number = models.CharField(max_length=100)
     year_of_study = models.CharField(max_length=100)
-    program_id = models.ForeignKey(Program, on_delete=models.CASCADE)
-    student_id = models.OneToOneField(User, on_delete=models.CASCADE, related_name="student_id")
+    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    student = models.OneToOneField(User, on_delete=models.CASCADE, related_name="student_id")
     organization_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="organization_id")
     profile_image = models.ImageField(upload_to='images/', blank=True)
-    field_supervisor_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="field_supervisor")
-    department_id = models.ForeignKey(Department, on_delete=models.CASCADE)
-    academic_supervisor_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="academic_supervisor")
+    field_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="field_supervisor")
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    academic_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="academic_supervisor")
 
     def __str__(self):
         return f'{self.student_id.username } Profile'
