@@ -14,8 +14,8 @@ class StudentProfileSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class StudentProfessionSerializer(serializers.ModelSerializer):
-    registration_number = serializers.CharField(source="student_id.username", read_only=True)
-    profession_name = serializers.CharField(source="profession_id.profession_name", read_only=True)
+    registration_number = serializers.CharField(source="student.username", read_only=True)
+    profession_name = serializers.CharField(source="profession.profession_name", read_only=True)
 
     class Meta:
         model = StudentProfession

@@ -20,7 +20,6 @@ class Migration(migrations.Migration):
                 ('organization_phone_number', models.CharField(max_length=100)),
                 ('organization_email', models.CharField(max_length=100)),
                 ('organization_box_address', models.CharField(max_length=100)),
-                ('organization_id', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='organization_app.organization')),
             ],
         ),
     ]
