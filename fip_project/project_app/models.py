@@ -7,9 +7,9 @@ class Project(models.Model):
     recommendation_status = models.BooleanField(default=False)
     project_report = models.FileField(upload_to='raw/', blank=True, storage=RawMediaCloudinaryStorage())
 
-
     def __str__(self):
         return self.project_title
+        
 class ProjectMember(models.Model):
     project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
     member_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="project_member_id")

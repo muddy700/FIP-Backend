@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from department_app.models import Department
 from profession_app.models import Profession
 from program_app.models import Program
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 from django.db import models
 
 class StudentProfile(models.Model):
@@ -10,7 +11,7 @@ class StudentProfile(models.Model):
     year_of_study = models.CharField(max_length=100)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     student = models.OneToOneField(User, on_delete=models.CASCADE, related_name="student_id")
-    organization_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="organization_id")
+    organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="organization_id")
     profile_image = models.ImageField(upload_to='images/', blank=True)
     field_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="field_supervisor")
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
@@ -25,3 +26,10 @@ class StudentProfession(models.Model):
 
     def __str__(self):
         return f'{self.student_id.username } Profession' 
+
+class FieldReport(models.Model):
+    student = models.ForeignKey(User, on_delete=models.CASCADE, related_name="report_owner_id")
+    report_file = models.FileField(upload_to='raw/', blank=True, storage=RawMediaCloudinaryStorage())
+
+    def __str__(self):
+        return f'{self.student_id.username } Report' 

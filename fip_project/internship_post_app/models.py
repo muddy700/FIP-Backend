@@ -5,7 +5,7 @@ from django.db import models
 
 class InternshipPost(models.Model):
     post_title = models.CharField(max_length=100)
-    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    organization = models.ForeignKey(User, on_delete=models.CASCADE)
     post_capacity = models.IntegerField()
     post_description = models.CharField(max_length=300)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -16,15 +16,16 @@ class InternshipPost(models.Model):
         return self.post_title
 
 class InternshipPostProfession(models.Model):
-    internship_profession_post_id = models.ForeignKey(InternshipPost, on_delete=models.CASCADE, related_name="internship_profession_post_id")
-    profession_id = models.ForeignKey(Profession, on_delete=models.CASCADE)
+    post = models.ForeignKey(InternshipPost, on_delete=models.CASCADE, related_name="internship_profession_post_id")
+    profession = models.ForeignKey(Profession, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.internship_profession_post_id.post_title } Profession'
 
 class InternshipApplication(models.Model):
-    internship_application_post_id = models.ForeignKey(InternshipPost, on_delete=models.CASCADE, related_name="internship_application_post_id")
-    alumni_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_application_id")
+    post = models.ForeignKey(InternshipPost, on_delete=models.CASCADE, related_name="internship_application_post_id")
+    alumni = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_application_id")
+    status = models.CharField(max_length=100, default="pending")
 
     def __str__(self):
         return f'{self.internship_application_post_id.post_title } Application' 
