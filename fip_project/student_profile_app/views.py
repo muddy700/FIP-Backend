@@ -32,5 +32,5 @@ class StudentProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, m
     queryset = StudentProfession.objects
 
     def get_queryset(self):
-        student_id = self.request.query_params.get('studentId')
-        return self.queryset.filter(studentprofession_set__student=student_id)
+        student_id = self.kwargs.get('studentId')
+        return self.queryset.filter(student=student_id)

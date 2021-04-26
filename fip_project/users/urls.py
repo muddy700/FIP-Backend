@@ -13,8 +13,11 @@ from alumni_profile_app.views import AlumniProfileViewSet, AlumniProfessionViewS
 from staff_profile_app.views import StaffProfileViewSet
 from field_post_app.views import FieldPostViewSet, FieldApplicationViewSet, FieldPostProfessionViewSet
 from internship_post_app.views import InternshipPostViewSet, InternshipPostProfessionViewSet, InternshipApplicationViewSet
+from student_profile_app.views import StudentProfessionViewSet
 
 router = routers.DefaultRouter()
+router.register(r'student/(?P<studentId>\d+)/professions', StudentProfessionViewSet, 'student-professions')
+
 router.register('users', UsersViewSet, 'users')
 router.register('designations', DesignationViewSet, 'designations')
 router.register('departments', DepartmentViewSet, 'departments')
