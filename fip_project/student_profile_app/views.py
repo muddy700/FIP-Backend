@@ -27,10 +27,3 @@ class FieldReportViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = FieldReportSerializer
 
-class StudentProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
-    serializer_class = StudentProfessionSerializer
-    queryset = StudentProfession.objects
-
-    def get_queryset(self):
-        student_id = self.kwargs.get('studentId')
-        return self.queryset.filter(student=student_id)

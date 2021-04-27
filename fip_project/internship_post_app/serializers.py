@@ -2,7 +2,7 @@ from .models import InternshipPost, InternshipApplication, InternshipPostProfess
 from rest_framework import serializers
 
 class InternshipPostSerializer(serializers.ModelSerializer):
-    organization_name = serializers.CharField(source="organization.organization_name", read_only=True)
+    organization_name = serializers.CharField(source="organization.username", read_only=True)
 
     class Meta:
         model = InternshipPost

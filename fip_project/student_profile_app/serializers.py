@@ -8,6 +8,7 @@ class StudentProfileSerializer(serializers.ModelSerializer):
     department_name = serializers.CharField(source="department.department_name", read_only=True)
     profession_name = serializers.CharField(source="profession_id.profession_name", read_only=True)
     academic_supervisor_name = serializers.CharField(source="academic_supervisor.username", read_only=True)
+    field_supervisor_name = serializers.CharField(source="field_supervisor.username", read_only=True)
 
     class Meta:
         model = StudentProfile
