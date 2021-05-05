@@ -18,7 +18,7 @@ class StudentProfile(models.Model):
     academic_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="academic_supervisor")
 
     def __str__(self):
-        return f'{self.student_id.username } Profile'
+        return f'{self.student.username } Profile'
 
 class StudentProfession(models.Model):
     student = models.ForeignKey(User, on_delete=models.CASCADE, related_name="student_profession_id")

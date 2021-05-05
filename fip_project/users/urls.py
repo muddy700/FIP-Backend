@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .views import UsersViewSet
+from .views import UsersViewSet, UserProfileViewSet
 from designation.views import DesignationViewSet
 from program_app.views import ProgramViewSet
 from project_app.views import ProjectViewSet, ProjectMemberViewSet
@@ -17,6 +17,7 @@ from internship_post_app.views import InternshipPostViewSet, InternshipPostProfe
 router = routers.DefaultRouter()
 
 router.register('users', UsersViewSet, 'users')
+router.register('users_profiles', UserProfileViewSet, 'users_profiles')
 router.register('designations', DesignationViewSet, 'designations')
 router.register('departments', DepartmentViewSet, 'departments')
 router.register('programs', ProgramViewSet, 'programs')

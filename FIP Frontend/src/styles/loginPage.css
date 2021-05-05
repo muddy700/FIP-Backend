@@ -1,0 +1,11 @@
+.login-form-container {
+    background-color: white;
+    width:inherit;
+    place-items: center;
+    display: grid;
+}
+
+.login-form {
+    width: 30%;
+
+}
