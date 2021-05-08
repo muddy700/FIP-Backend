@@ -9,9 +9,49 @@ from program_app.serializers import ProgramSerializer
 from program_app.models import Program
 from field_post_app.models import FieldApplication, FieldPost, FieldPostProfession
 from field_post_app.serializers import FieldPostProfessionSerializer, FieldApplicationSerializer, FieldPostSerializer
-from internship_post_app.models import InternshipApplication, InternshipPost, InternshipPostProfession
-from internship_post_app.serializers import InternshipPostSerializer, InternshipPostProfessionSerializer, InternshipApplicationSerializer
+from internship_post_app.models import InternshipApplication, InternshipPost
+from internship_post_app.serializers import InternshipPostSerializer, InternshipApplicationSerializer
+from .models import UserProfile
+from .serializers import UserProfileSerializer
+from announcement_app.models import Announcement
+from announcement_app.serializers import AnnouncementSerializer
+from project_app.models import ProjectMember
+from project_app.serializers import ProjectMemberSerializer
+class ProjectsByMemberViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = ProjectMemberSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
 
+    def get_queryset(self):
+        memberId = self.kwargs.get('memberId')
+        return ProjectMember.objects.filter(member=memberId)
+        
+class ProjectMembersViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = ProjectMemberSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        projectId = self.kwargs.get('projectId')
+        return ProjectMember.objects.filter(project=projectId)
+
+class AnnouncementsByDesignationsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = AnnouncementSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        designation_id = self.kwargs.get('designationId')
+        return Announcement.objects.filter(destination=designation_id)
+
+class SingleUserProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = UserProfileSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        user_id = self.kwargs.get('userId')
+        return UserProfile.objects.filter(user=user_id)
 
 class StudentProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = StudentProfessionSerializer
@@ -113,6 +153,15 @@ class AlumniProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mi
         alumni_id = self.kwargs.get('alumniId')
         return AlumniProfession.objects.filter(alumni=alumni_id)
 
+class SingleAlumniProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = AlumniProfileSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        alumni_id = self.kwargs.get('alumniId')
+        return AlumniProfile.objects.filter(alumni=alumni_id)
+
 class AlumniByOrganizationViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = AlumniProfileSerializer
     permission_classes = [
@@ -195,17 +244,6 @@ class InternshipPostByOrganizationViewSet(viewsets.GenericViewSet, mixins.ListMo
         organization_id = self.kwargs.get('organizationId')
         return InternshipPost.objects.filter(organization=organization_id)
         
-
-class InternshipPostProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
-    serializer_class = InternshipPostProfessionSerializer
-    permission_classes = [
-        permissions.IsAuthenticated ]
-
-    def get_queryset(self):
-        post_id = self.kwargs.get('postId')
-        return InternshipPostProfession.objects.filter(post=post_id)
-
-
 class InternshipApplicationByPostViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = InternshipApplicationSerializer
     permission_classes = [

@@ -3,16 +3,20 @@ from django.contrib.auth.models import User
 from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 class Project(models.Model):
-    project_title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, blank=True)
+    year = models.CharField(max_length=10, blank=True)
+    sponsor = models.CharField(max_length=100, blank=True)
+    report = models.FileField(upload_to='raw/', blank=True, storage=RawMediaCloudinaryStorage())
+    date_created = models.DateTimeField(auto_now_add=True, blank=True)
+    date_updated = models.DateTimeField(auto_now=True, blank=True)
     recommendation_status = models.BooleanField(default=False)
-    project_report = models.FileField(upload_to='raw/', blank=True, storage=RawMediaCloudinaryStorage())
 
     def __str__(self):
-        return self.project_title
+        return self.title
         
 class ProjectMember(models.Model):
-    project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
-    member_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="project_member_id")
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    member = models.ForeignKey(User, on_delete=models.CASCADE, related_name="project_member")
 
     def __str__(self):
-        return f'{self.project_id.project_title } Member'
+        return f'{self.project.title } Member'

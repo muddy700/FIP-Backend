@@ -2,14 +2,20 @@ from .models import Project, ProjectMember
 from rest_framework import serializers
 
 class ProjectSerializer(serializers.ModelSerializer):
-    project_owner_name = serializers.CharField(source="project_owner.username", read_only=True)
+    owner_name = serializers.CharField(source="owner.username", read_only=True)
 
     class Meta:
         model = Project
         fields = '__all__' 
 class ProjectMemberSerializer(serializers.ModelSerializer):
-    member_name = serializers.CharField(source="member_id.username", read_only=True)
-    project_name = serializers.CharField(source="project_id.project_name", read_only=True)
+    member_name = serializers.CharField(source="member.username", read_only=True)
+    project_title = serializers.CharField(source="project.title", read_only=True)
+    project_year = serializers.CharField(source="project.year", read_only=True)
+    project_sponsor = serializers.CharField(source="project.sponsor", read_only=True)
+    project_report = serializers.CharField(source="project.report", read_only=True)
+    project_date_created = serializers.CharField(source="project.date_created", read_only=True)
+    project_date_update = serializers.CharField(source="project.date_updated", read_only=True)
+    project_recommendation_status = serializers.CharField(source="project.recommendation_status", read_only=True)
 
     class Meta:
         model = ProjectMember

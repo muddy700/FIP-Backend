@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'users',
     'knox',
     'department_app',
+    'announcement_app',
     'program_app',
     'project_app',
     'certificate_app',

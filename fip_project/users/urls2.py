@@ -9,17 +9,23 @@ from .api2 import ( StudentProfessionViewSet,
     AlumniByDepartmentViewSet, FieldPostByOrganizationViewSet,
     FieldApplicationByPostViewSet, FieldPostProfessionViewSet,
     FieldApplicationByStudentViewSet, InternshipPostByOrganizationViewSet,
-    InternshipPostProfessionViewSet, InternshipApplicationByPostViewSet,
+    InternshipApplicationByPostViewSet,
     InternshipApplicationByAlumniViewSet, StudentReportViewSet,
-    AlumniByStatusViewSet)
+    AlumniByStatusViewSet, SingleUserProfileViewSet,
+    SingleAlumniProfileViewSet, AnnouncementsByDesignationsViewSet,
+    ProjectsByMemberViewSet, ProjectMembersViewSet)
 
 router = routers.DefaultRouter()
 
+router.register(r'user/(?P<userId>\d+)/profile', SingleUserProfileViewSet, 'user-profile')
+router.register(r'member/(?P<memberId>\d+)/projects', ProjectsByMemberViewSet, 'user-projects')
+router.register(r'project/(?P<projectId>\d+)/members', ProjectMembersViewSet, 'project-members')
+router.register(r'designation/(?P<designationId>\d+)/announcements', AnnouncementsByDesignationsViewSet, 'users-announcements')
 router.register(r'student/(?P<studentId>\d+)/professions', StudentProfessionViewSet, 'student-professions')
 router.register(r'student/(?P<studentId>\d+)/report', StudentReportViewSet, 'student-report')
 router.register(r'alumni/(?P<alumniId>\d+)/professions', AlumniProfessionViewSet, 'alumni-professions')
+router.register(r'alumni/(?P<alumniId>\d+)/profile', SingleAlumniProfileViewSet, 'alumni-profile')
 router.register(r'field_post/(?P<postId>\d+)/professions', FieldPostProfessionViewSet, 'field_post-professions')
-router.register(r'internship_post/(?P<postId>\d+)/professions', InternshipPostProfessionViewSet, 'internship_post-professions')
 router.register(r'department/(?P<departmentId>\d+)/programs', ProgramsByDepartmentViewSet, 'department-programs')
 router.register(r'alumni_by_department/(?P<departmentId>\d+)', AlumniByDepartmentViewSet, 'alumni_by_department')
 router.register(r'organization/(?P<organizationId>\d+)/students', StudentsByOrganizationViewSet, 'organization-students')

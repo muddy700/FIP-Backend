@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .views import UsersViewSet, UserProfileViewSet
+from .views import UsersViewSet, UserProfileViewSet, LoggedUserProfileViewSet
 from designation.views import DesignationViewSet
 from program_app.views import ProgramViewSet
 from project_app.views import ProjectViewSet, ProjectMemberViewSet
@@ -12,10 +12,13 @@ from student_profile_app.views import StudentProfileViewSet, StudentsProfessions
 from alumni_profile_app.views import AlumniProfileViewSet, AlumniProfessionViewSet
 from staff_profile_app.views import StaffProfileViewSet
 from field_post_app.views import FieldPostViewSet, FieldApplicationViewSet, FieldPostProfessionViewSet
-from internship_post_app.views import InternshipPostViewSet, InternshipPostProfessionViewSet, InternshipApplicationViewSet
+from internship_post_app.views import InternshipPostViewSet, InternshipApplicationViewSet
+from announcement_app.views import AnnouncementViewSet
 
 router = routers.DefaultRouter()
 
+router.register('user_profile', LoggedUserProfileViewSet, 'user_profile')
+router.register('announcements', AnnouncementViewSet, 'announcements')
 router.register('users', UsersViewSet, 'users')
 router.register('users_profiles', UserProfileViewSet, 'users_profiles')
 router.register('designations', DesignationViewSet, 'designations')
@@ -38,7 +41,6 @@ router.register('field_post_professions', FieldPostProfessionViewSet, 'field_pos
 router.register('field_applications', FieldApplicationViewSet, 'field_applications')
 router.register('internship_posts', InternshipPostViewSet, 'internship_posts')
 router.register('internship_applications', InternshipApplicationViewSet, 'internship_applications')
-router.register('internship_post_professions', InternshipPostProfessionViewSet, 'internship_post_professions')
 
 
 urlpatterns = router.urls

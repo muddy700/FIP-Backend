@@ -55,4 +55,12 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = UserProfileSerializer
 
-    
+class LoggedUserProfileViewSet(viewsets.ModelViewSet):
+    queryset = UserProfile.objects
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    serializer_class = UserProfileSerializer
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
