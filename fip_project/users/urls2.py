@@ -13,10 +13,15 @@ from .api2 import ( StudentProfessionViewSet,
     InternshipApplicationByAlumniViewSet, StudentReportViewSet,
     AlumniByStatusViewSet, SingleUserProfileViewSet,
     SingleAlumniProfileViewSet, AnnouncementsByDesignationsViewSet,
-    ProjectsByMemberViewSet, ProjectMembersViewSet)
+    ProjectsByMemberViewSet, ProjectMembersViewSet,
+    QuestionChoicesViewSet, ApplicantMarksViewSet,
+    ApplicantAnswersViewSet)
 
 router = routers.DefaultRouter()
 
+router.register(r'alumni/(?P<alumniId>\d+)/post/(?P<postId>\d+)/marks', ApplicantMarksViewSet, 'alumni-marks')
+router.register(r'alumni/(?P<alumniId>\d+)/post/(?P<postId>\d+)/answers', ApplicantAnswersViewSet, 'alumni-answers')
+router.register(r'question/(?P<questionId>\d+)/choices', QuestionChoicesViewSet, 'question-choices')
 router.register(r'user/(?P<userId>\d+)/profile', SingleUserProfileViewSet, 'user-profile')
 router.register(r'member/(?P<memberId>\d+)/projects', ProjectsByMemberViewSet, 'user-projects')
 router.register(r'project/(?P<projectId>\d+)/members', ProjectMembersViewSet, 'project-members')

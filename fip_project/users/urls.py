@@ -14,9 +14,15 @@ from staff_profile_app.views import StaffProfileViewSet
 from field_post_app.views import FieldPostViewSet, FieldApplicationViewSet, FieldPostProfessionViewSet
 from internship_post_app.views import InternshipPostViewSet, InternshipApplicationViewSet
 from announcement_app.views import AnnouncementViewSet
+from questions_app.views import (QuestionsViewSet, MultipleChoicesViewSet,
+ApplicantAnswerViewSet, ApplicantScoreViewSet)
 
 router = routers.DefaultRouter()
 
+router.register('alumni_answers', ApplicantAnswerViewSet, 'alumni_answers')
+router.register('alumni_scores', ApplicantScoreViewSet, 'alumni_scores')
+router.register('questions', QuestionsViewSet, 'questions')
+router.register('multiplechoices', MultipleChoicesViewSet, 'multiplechoices')
 router.register('user_profile', LoggedUserProfileViewSet, 'user_profile')
 router.register('announcements', AnnouncementViewSet, 'announcements')
 router.register('users', UsersViewSet, 'users')

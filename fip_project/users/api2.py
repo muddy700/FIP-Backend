@@ -17,6 +17,40 @@ from announcement_app.models import Announcement
 from announcement_app.serializers import AnnouncementSerializer
 from project_app.models import ProjectMember
 from project_app.serializers import ProjectMemberSerializer
+from questions_app.models import MultipleChoice, ApplicantScore, ApplicantAnswer
+from questions_app.serializers import MultipleChoiceSerializer, ApplicantScoreSerializer, ApplicantAnswerSerializer
+
+class QuestionChoicesViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = MultipleChoiceSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        question_id = self.kwargs.get('questionId')
+        return MultipleChoice.objects.filter(question=question_id)
+
+class ApplicantMarksViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = ApplicantScoreSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        alumni_id = self.kwargs.get('alumniId')
+        post_id = self.kwargs.get('postId')
+        return ApplicantScore.objects.filter(alumni=alumni_id, post=post_id)
+
+        
+class ApplicantAnswersViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = ApplicantAnswerSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        alumni_id = self.kwargs.get('alumniId')
+        post_id = self.kwargs.get('postId')
+        return ApplicantAnswer.objects.filter(alumni=alumni_id, post=post_id)
+
+        
 class ProjectsByMemberViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = ProjectMemberSerializer
     permission_classes = [
