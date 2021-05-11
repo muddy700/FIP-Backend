@@ -15,10 +15,11 @@ from .api2 import ( StudentProfessionViewSet,
     SingleAlumniProfileViewSet, AnnouncementsByDesignationsViewSet,
     ProjectsByMemberViewSet, ProjectMembersViewSet,
     QuestionChoicesViewSet, ApplicantMarksViewSet,
-    ApplicantAnswersViewSet)
+    ApplicantAnswersViewSet, QuestionsByProfessionsViewSet)
 
 router = routers.DefaultRouter()
 
+router.register(r'profession/(?P<professionId>\d+)/questions', QuestionsByProfessionsViewSet, 'profession_questions')
 router.register(r'alumni/(?P<alumniId>\d+)/post/(?P<postId>\d+)/marks', ApplicantMarksViewSet, 'alumni-marks')
 router.register(r'alumni/(?P<alumniId>\d+)/post/(?P<postId>\d+)/answers', ApplicantAnswersViewSet, 'alumni-answers')
 router.register(r'question/(?P<questionId>\d+)/choices', QuestionChoicesViewSet, 'question-choices')

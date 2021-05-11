@@ -17,8 +17,11 @@ from announcement_app.models import Announcement
 from announcement_app.serializers import AnnouncementSerializer
 from project_app.models import ProjectMember
 from project_app.serializers import ProjectMemberSerializer
-from questions_app.models import MultipleChoice, ApplicantScore, ApplicantAnswer
-from questions_app.serializers import MultipleChoiceSerializer, ApplicantScoreSerializer, ApplicantAnswerSerializer
+from questions_app.models import (MultipleChoice, ApplicantScore,
+    ApplicantAnswer, Question)
+from questions_app.serializers import (MultipleChoiceSerializer, 
+    ApplicantScoreSerializer, ApplicantAnswerSerializer,
+    QuestionSerializer)
 
 class QuestionChoicesViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = MultipleChoiceSerializer
@@ -29,6 +32,15 @@ class QuestionChoicesViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mix
         question_id = self.kwargs.get('questionId')
         return MultipleChoice.objects.filter(question=question_id)
 
+class QuestionsByProfessionsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = QuestionSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        profession_id = self.kwargs.get('professionId')
+        return Question.objects.filter(profession=profession_id)
+
 class ApplicantMarksViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = ApplicantScoreSerializer
     permission_classes = [
@@ -38,7 +50,6 @@ class ApplicantMarksViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixi
         alumni_id = self.kwargs.get('alumniId')
         post_id = self.kwargs.get('postId')
         return ApplicantScore.objects.filter(alumni=alumni_id, post=post_id)
-
         
 class ApplicantAnswersViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = ApplicantAnswerSerializer
