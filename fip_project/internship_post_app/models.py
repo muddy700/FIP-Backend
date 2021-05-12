@@ -16,9 +16,11 @@ class InternshipPost(models.Model):
         return f'{self.organization.username} Post'
 
 class InternshipApplication(models.Model):
-    post = models.ForeignKey(InternshipPost, on_delete=models.CASCADE, related_name="internship_application_post_id")
     alumni = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_application_id")
-    status = models.CharField(max_length=100, default="pending")
+    post = models.ForeignKey(InternshipPost, on_delete=models.CASCADE, related_name="internship_application_post_id")
+    test_score = models.FloatField()
+    status = models.CharField(max_length=100, default="received")
+    date_applied = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.alumni.username } Application' 
