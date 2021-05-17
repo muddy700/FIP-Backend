@@ -15,7 +15,8 @@ from .api2 import ( StudentProfessionViewSet,
     SingleAlumniProfileViewSet, AnnouncementsByDesignationsViewSet,
     ProjectsByMemberViewSet, ProjectMembersViewSet,
     QuestionChoicesViewSet, ApplicantMarksViewSet,
-    ApplicantAnswersViewSet, QuestionsByProfessionsViewSet)
+    ApplicantAnswersViewSet, QuestionsByProfessionsViewSet,
+    InternshipApplicationByOrganizationViewSet)
 
 router = routers.DefaultRouter()
 
@@ -35,6 +36,7 @@ router.register(r'field_post/(?P<postId>\d+)/professions', FieldPostProfessionVi
 router.register(r'department/(?P<departmentId>\d+)/programs', ProgramsByDepartmentViewSet, 'department-programs')
 router.register(r'alumni_by_department/(?P<departmentId>\d+)', AlumniByDepartmentViewSet, 'alumni_by_department')
 router.register(r'organization/(?P<organizationId>\d+)/students', StudentsByOrganizationViewSet, 'organization-students')
+router.register(r'organization/(?P<organizationId>\d+)/applications', InternshipApplicationByOrganizationViewSet, 'organization-internship-applications')
 router.register(r'organization/(?P<organizationId>\d+)/field_posts', FieldPostByOrganizationViewSet, 'organization-field-posts')
 router.register(r'organization/(?P<organizationId>\d+)/internship_posts', InternshipPostByOrganizationViewSet, 'organization-internship-posts')
 router.register(r'alumni_by_organization/(?P<organizationId>\d+)', AlumniByOrganizationViewSet, 'alumni_by_organization')

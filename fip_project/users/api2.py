@@ -289,14 +289,14 @@ class InternshipPostByOrganizationViewSet(viewsets.GenericViewSet, mixins.ListMo
         organization_id = self.kwargs.get('organizationId')
         return InternshipPost.objects.filter(organization=organization_id)
         
-# class InternshipApplicationByOrganizationViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
-#     serializer_class = InternshipApplicationSerializer
-#     permission_classes = [
-#         permissions.IsAuthenticated ]
+class InternshipApplicationByOrganizationViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = InternshipApplicationSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
 
-#     def get_queryset(self):
-#         organization_id = self.kwargs.get('organizationId')
-        # return InternshipApplication.objects.filter(post. = organization_id, status="accepted")
+    def get_queryset(self):
+        organization_id = self.kwargs.get('organizationId')
+        return InternshipApplication.objects.filter(organization=organization_id, status="accepted")
 
 class InternshipApplicationByPostViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = InternshipApplicationSerializer

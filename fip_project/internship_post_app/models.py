@@ -17,6 +17,7 @@ class InternshipPost(models.Model):
 
 class InternshipApplication(models.Model):
     alumni = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_application_id")
+    organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="applied_organization")
     post = models.ForeignKey(InternshipPost, on_delete=models.CASCADE, related_name="internship_application_post_id")
     test_score = models.FloatField()
     status = models.CharField(max_length=100, default="received")

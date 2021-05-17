@@ -12,6 +12,7 @@ class InternshipPostSerializer(serializers.ModelSerializer):
 class InternshipApplicationSerializer(serializers.ModelSerializer):
     alumni_name = serializers.CharField(source="alumni.username", read_only=True)
     organization_name = serializers.CharField(source="post.organization.username", read_only=True)
+    organization_id = serializers.CharField(source="post.organization.id", read_only=True)
     post_profession = serializers.CharField(source="post.profession.profession_name", read_only=True)
     post_capacity = serializers.CharField(source="post.post_capacity", read_only=True)
     post_description= serializers.CharField(source="post.post_description", read_only=True)
