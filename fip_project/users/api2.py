@@ -9,8 +9,8 @@ from program_app.serializers import ProgramSerializer
 from program_app.models import Program
 from field_post_app.models import FieldApplication, FieldPost, FieldPostProfession
 from field_post_app.serializers import FieldPostProfessionSerializer, FieldApplicationSerializer, FieldPostSerializer
-from internship_post_app.models import InternshipApplication, InternshipPost
-from internship_post_app.serializers import InternshipPostSerializer, InternshipApplicationSerializer
+from internship_post_app.models import InternshipApplication, InternshipPost, InterviewSchedule
+from internship_post_app.serializers import InternshipPostSerializer, InternshipApplicationSerializer, InterviewScheduleSerializer
 from .models import UserProfile
 from .serializers import UserProfileSerializer
 from announcement_app.models import Announcement
@@ -22,6 +22,15 @@ from questions_app.models import (MultipleChoice, ApplicantScore,
 from questions_app.serializers import (MultipleChoiceSerializer, 
     ApplicantScoreSerializer, ApplicantAnswerSerializer,
     QuestionSerializer)
+
+class InterviewScheduleByPostViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = InterviewScheduleSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        post_id = self.kwargs.get('postId')
+        return InterviewSchedule.objects.filter(post=post_id)
 
 class QuestionChoicesViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = MultipleChoiceSerializer

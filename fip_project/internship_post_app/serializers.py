@@ -1,4 +1,5 @@
-from .models import InternshipPost, InternshipApplication
+from .models import (InternshipPost, InternshipApplication,
+ InternshipApplicationStatus, ApplicantLevel, InterviewSchedule)
 from rest_framework import serializers
 
 class InternshipPostSerializer(serializers.ModelSerializer):
@@ -19,4 +20,20 @@ class InternshipApplicationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = InternshipApplication
+        fields = '__all__'
+class InternshipApplicationStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = InternshipApplicationStatus
+        fields = '__all__'
+
+class ApplicantLevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ApplicantLevel
+        fields = '__all__'
+class InterviewScheduleSerializer(serializers.ModelSerializer):
+    post_description= serializers.CharField(source="post.post_description", read_only=True)
+    organization_name = serializers.CharField(source="organization.username", read_only=True)
+
+    class Meta:
+        model = InterviewSchedule
         fields = '__all__'

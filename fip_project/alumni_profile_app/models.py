@@ -20,4 +20,4 @@ class AlumniProfession(models.Model):
     profession = models.ForeignKey(Profession, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.alumni_id.username} Profession'
+        return f'{self.alumni.username} Profession'
