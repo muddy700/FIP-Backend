@@ -8,13 +8,14 @@ class InternshipPost(models.Model):
     organization = models.ForeignKey(User, on_delete=models.CASCADE)
     post_capacity = models.IntegerField()
     post_description = models.CharField(max_length=300)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-    expiry_date = models.CharField(max_length=100)
+    date_created = models.DateField(auto_now_add=True)
+    date_updated = models.DateField(auto_now=True)
+    expiry_date = models.DateField()
+    status = models.CharField(max_length=50, default="test")
     profession = models.ForeignKey(Profession, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.organization.username} Post'
+        return self.reference_number
 
 class InternshipApplication(models.Model):
     alumni = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_application_id")
@@ -24,7 +25,7 @@ class InternshipApplication(models.Model):
     practical_marks = models.FloatField(null=True, blank=True)
     oral_marks = models.FloatField(null=True, blank=True)
     status = models.CharField(max_length=100, default="received")
-    applicant_level = models.CharField(max_length=100, default="inprogress")
+    final_stage = models.CharField(max_length=100, default="inprogress")
     date_applied = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
