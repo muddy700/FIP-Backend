@@ -25,6 +25,7 @@ class InternshipApplication(models.Model):
     practical_marks = models.FloatField(null=True, blank=True)
     oral_marks = models.FloatField(null=True, blank=True)
     status = models.CharField(max_length=100, default="received")
+    confirmation_status = models.CharField(max_length=100, default="test")
     final_stage = models.CharField(max_length=100, default="inprogress")
     date_applied = models.DateTimeField(auto_now_add=True)
 
