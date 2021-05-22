@@ -48,6 +48,8 @@ class InterviewSchedule(models.Model):
     event_date = models.DateTimeField()
     location = models.CharField(max_length=100)
     requirements = models.CharField(max_length=500)
+    post_stage = models.CharField(max_length=100, default='test')
+
 
 
     def __str__(self):
