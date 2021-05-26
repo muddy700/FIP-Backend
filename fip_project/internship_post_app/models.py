@@ -47,7 +47,7 @@ class InterviewSchedule(models.Model):
     organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="actor_organization")
     event_date = models.DateTimeField()
     location = models.CharField(max_length=100)
-    requirements = models.CharField(max_length=500)
+    requirements = models.CharField(max_length=500, default='')
     post_stage = models.CharField(max_length=100, default='test')
 
 
