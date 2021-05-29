@@ -1,5 +1,5 @@
 from django.contrib import admin
-from users.views import RegisterAPI, LoginAPI, UserAPI, UsersViewSet
+from users.views import RegisterAPI, LoginAPI, UserAPI, ChangePasswordView
 from knox import views as knox_views
 from django.urls import path, include
 
@@ -13,4 +13,5 @@ urlpatterns = [
     path('api/auth/user', UserAPI.as_view()),
     path('api/logout/', knox_views.LogoutView.as_view(), name='logout'),
     path('api/logoutall/', knox_views.LogoutAllView.as_view(), name='logoutall'),
+    path('api/change_password/', ChangePasswordView.as_view(), name='change-password')
 ]
