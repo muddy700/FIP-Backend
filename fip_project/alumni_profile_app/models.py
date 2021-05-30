@@ -9,7 +9,7 @@ class AlumniProfile(models.Model):
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     alumni = models.OneToOneField(User, on_delete=models.CASCADE, related_name="alumni_id")
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    is_active = models.BooleanField(default=False)
+    is_taken = models.BooleanField(default=False)
     organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_organization_id")
 
     def __str__(self):
