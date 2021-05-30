@@ -28,6 +28,7 @@ class InternshipApplication(models.Model):
     confirmation_status = models.CharField(max_length=100, default="test")
     final_stage = models.CharField(max_length=100, default="inprogress")
     date_applied = models.DateTimeField(auto_now_add=True)
+    has_reported = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.alumni.username } Application' 
@@ -49,8 +50,6 @@ class InterviewSchedule(models.Model):
     location = models.CharField(max_length=100)
     requirements = models.CharField(max_length=500, default='')
     post_stage = models.CharField(max_length=100, default='test')
-
-
 
     def __str__(self):
         return f'{self.organization.username } Schedule'

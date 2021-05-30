@@ -11,9 +11,9 @@ class OrganizationProfile(models.Model):
         return f'{self.organization_id.username } Profile'
 
 class Contract(models.Model):
-    alumni = models.OneToOneField(User, on_delete=models.CASCADE, related_name="employee")
-    organization = models.OneToOneField(User, on_delete=models.CASCADE, related_name="employer")
-    start_date = models.DateTimeField(auto_now_add=True)
+    alumni = models.ForeignKey(User, on_delete=models.CASCADE, related_name="employee")
+    organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="employer")
+    start_date = models.DateField(auto_now_add=True)
     finish_date = models.DateField()
     profession = models.ForeignKey(Profession, on_delete=models.CASCADE)
 
