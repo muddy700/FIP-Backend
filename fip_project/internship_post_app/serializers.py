@@ -19,7 +19,8 @@ class InternshipApplicationSerializer(serializers.ModelSerializer):
     post_status = serializers.CharField(source="post.status", read_only=True)
     post_reference = serializers.CharField(source="post.reference_number", read_only=True)
     post_capacity = serializers.CharField(source="post.post_capacity", read_only=True)
-    post_description= serializers.CharField(source="post.post_description", read_only=True)
+    post_description = serializers.CharField(source="post.post_description", read_only=True)
+    reporting_instructions = serializers.CharField(source="post.reporting_instructions", read_only=True)
 
     class Meta:
         model = InternshipApplication

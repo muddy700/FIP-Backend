@@ -1,0 +1,11 @@
+Done
+
+    31/5/2021
+1. Added 'reporting_instructions' Field in InternshipPost Model To Check If Post Has Reporting Instructions Or Not.
+2. Added Filter API For Organization Contracts.
+3. Added 'has_released' Field In InternshipApplication Model
+
+
+
+Planned
+1. Change some filters from returning array into get_obj_or_404

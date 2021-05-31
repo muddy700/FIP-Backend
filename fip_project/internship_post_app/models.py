@@ -4,7 +4,7 @@ from profession_app.models import Profession
 from django.db import models
 
 class InternshipPost(models.Model):
-    reference_number = models.CharField(max_length=100, default="FIP/2021/P000")
+    reference_number = models.CharField(max_length=100, default="FIP/2021/P000", unique=True)
     organization = models.ForeignKey(User, on_delete=models.CASCADE)
     post_capacity = models.IntegerField()
     post_description = models.CharField(max_length=300)
@@ -13,6 +13,7 @@ class InternshipPost(models.Model):
     expiry_date = models.DateField()
     status = models.CharField(max_length=50, default="test")
     profession = models.ForeignKey(Profession, on_delete=models.CASCADE)
+    reporting_instructions = models.BooleanField(default=False)
 
     def __str__(self):
         return self.reference_number
@@ -29,6 +30,7 @@ class InternshipApplication(models.Model):
     final_stage = models.CharField(max_length=100, default="inprogress")
     date_applied = models.DateTimeField(auto_now_add=True)
     has_reported = models.BooleanField(default=False)
+    has_released = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.alumni.username } Application' 
