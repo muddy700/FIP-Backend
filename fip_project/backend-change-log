@@ -5,7 +5,9 @@ Done
 2. Added Filter API For Organization Contracts.
 3. Added 'has_released' Field In InternshipApplication Model
 
-
+    1/6/2021
+1. Added Rating Model For Holding Alumni Ratings.
+2. Added API For Getting Single Organization Profile By Using OrganizationId
 
 Planned
 1. Change some filters from returning array into get_obj_or_404

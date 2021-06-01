@@ -1,8 +1,9 @@
-from .models import OrganizationProfile, Contract
+from .models import OrganizationProfile, Contract, Rating
 from rest_framework import serializers
 
 class OrganizationProfileSerializer(serializers.ModelSerializer):
     organization_name = serializers.CharField(source="organization_id.username", read_only=True)
+    pwd = serializers.CharField(source="organization_id.password", read_only=True)
 
     class Meta:
         model = OrganizationProfile
@@ -15,4 +16,12 @@ class ContractSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contract
+        fields = '__all__' 
+
+class RatingSerializer(serializers.ModelSerializer):
+    organization_name = serializers.CharField(source="organization.username", read_only=True)
+    alumni_name = serializers.CharField(source="alumni.username", read_only=True)
+
+    class Meta:
+        model = Rating
         fields = '__all__' 

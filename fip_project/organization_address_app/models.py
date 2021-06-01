@@ -19,3 +19,11 @@ class Contract(models.Model):
 
     def __str__(self):
         return f'{self.alumni.username } Contract'
+
+class Rating(models.Model):
+    alumni = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_rated")
+    organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rating_organization")
+    value = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.alumni.username } Rating'

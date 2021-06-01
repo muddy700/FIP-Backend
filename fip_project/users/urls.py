@@ -6,7 +6,7 @@ from project_app.views import ProjectViewSet, ProjectMemberViewSet
 from profession_app.views import ProfessionViewSet
 from certificate_app.views import CertificateViewSet
 from department_app.views import DepartmentViewSet
-from organization_address_app.views import OrganizationProfileViewSet, ContractViewSet
+from organization_address_app.views import OrganizationProfileViewSet, ContractViewSet, RatingViewSet
 from field_supervisor_app.views import FieldSupervisorProfileViewSet
 from student_profile_app.views import StudentProfileViewSet, StudentsProfessionsViewSet, FieldReportViewSet
 from alumni_profile_app.views import AlumniProfileViewSet, AlumniProfessionViewSet
@@ -43,6 +43,7 @@ router.register('students_professions', StudentsProfessionsViewSet, 'students_pr
 router.register('alumni_profiles', AlumniProfileViewSet, 'alumni_profiles')
 router.register('contracts', ContractViewSet, 'contracts')
 router.register('alumni_professions', AlumniProfessionViewSet, 'alumni_professions')
+router.register('alumni_ratings', RatingViewSet, 'alumni_ratings')
 router.register('staffs_profiles', StaffProfileViewSet, 'staffs_profiles')
 router.register('field_posts', FieldPostViewSet, 'field_posts')
 router.register('field_post_professions', FieldPostProfessionViewSet, 'field_post_professions')

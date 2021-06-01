@@ -22,8 +22,8 @@ from questions_app.models import (MultipleChoice, ApplicantScore,
 from questions_app.serializers import (MultipleChoiceSerializer, 
     ApplicantScoreSerializer, ApplicantAnswerSerializer,
     QuestionSerializer)
-from organization_address_app.serializers import ContractSerializer
-from organization_address_app.models import Contract
+from organization_address_app.serializers import ContractSerializer, OrganizationProfileSerializer
+from organization_address_app.models import Contract, OrganizationProfile
 
 class InterviewScheduleByPostViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = InterviewScheduleSerializer
@@ -153,6 +153,15 @@ class StudentsByOrganizationViewSet(viewsets.GenericViewSet, mixins.ListModelMix
     def get_queryset(self):
         organization_id = self.kwargs.get('organizationId')
         return StudentProfile.objects.filter(organization=organization_id)
+
+class SingleOrganizationProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = OrganizationProfileSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        organization_id = self.kwargs.get('organizationId')
+        return OrganizationProfile.objects.filter(organization_id=organization_id)
 
 class StudentsByDepartmentViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = StudentProfileSerializer
