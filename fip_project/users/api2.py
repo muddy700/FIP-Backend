@@ -24,6 +24,8 @@ from questions_app.serializers import (MultipleChoiceSerializer,
     QuestionSerializer)
 from organization_address_app.serializers import ContractSerializer, OrganizationProfileSerializer
 from organization_address_app.models import Contract, OrganizationProfile
+from cv_app.serializers import PersonalInformationSerializer
+from cv_app.models import PersonalInformation
 
 class InterviewScheduleByPostViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = InterviewScheduleSerializer
@@ -217,6 +219,15 @@ class AlumniProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mi
     def get_queryset(self):
         alumni_id = self.kwargs.get('alumniId')
         return AlumniProfession.objects.filter(alumni=alumni_id)
+
+class CvPersonalInformationViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = PersonalInformationSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        alumni_id = self.kwargs.get('alumniId')
+        return PersonalInformation.objects.filter(alumni=alumni_id)
 
 class SingleAlumniProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = AlumniProfileSerializer
