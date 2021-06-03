@@ -7,7 +7,7 @@ class Project(models.Model):
     year = models.CharField(max_length=10, blank=True)
     sponsor = models.CharField(max_length=100, blank=True)
     report = models.FileField(upload_to='raw/', blank=True, storage=RawMediaCloudinaryStorage())
-    date_created = models.DateTimeField(auto_now_add=True, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True, blank=True)
     date_updated = models.DateTimeField(auto_now=True, blank=True)
     recommendation_status = models.BooleanField(default=False)
 

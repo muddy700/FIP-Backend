@@ -9,5 +9,8 @@ Done
 1. Added Rating Model For Holding Alumni Ratings.
 2. Added API For Getting Single Organization Profile By Using OrganizationId
 
+    3/6/2021
+1. Edited date_created to date_added in project Model
+
 Planned
 1. Change some filters from returning array into get_obj_or_404
