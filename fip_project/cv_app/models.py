@@ -3,7 +3,7 @@ from users.models import UserProfile
 from django.db import models
 
 class PersonalInformation(models.Model):
-    alumni = models.OneToOneField(User, on_delete=models.CASCADE, related_name="cv_owner")
+    alumni = models.OneToOneField(User, on_delete=models.CASCADE, related_name="cv_personal_owner")
     profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE, related_name="owner_profile")
     cv_image = models.ImageField(upload_to='images/', blank=True)
     middle_name = models.CharField(max_length=100, blank=True)
@@ -14,3 +14,13 @@ class PersonalInformation(models.Model):
 
     def __str__(self):
         return f'{self.alumni.username} Personal Info'
+
+class EducationInformation(models.Model):
+    alumni = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cv_education_owner")
+    institution = models.CharField(max_length=100)
+    education_level = models.CharField(max_length=100)
+    start_year = models.CharField(max_length=20)
+    completion_year = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f'{self.alumni.username} Education Info'

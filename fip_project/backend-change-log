@@ -11,6 +11,13 @@ Done
 
     3/6/2021
 1. Edited date_created to date_added in project Model
+2. Added CV_App And PersonalInformation Model In CV_App
+3. Added EducationInformation Model In CV_App With their API
+
+
+
 
 Planned
 1. Change some filters from returning array into get_obj_or_404
+2. Change Destination Folder In Cloudinary ie /FIP/profile_images, /FIP/certificates
+3. Create API Which Will Return All Informations Of CV From All Models

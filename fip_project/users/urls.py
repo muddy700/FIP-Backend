@@ -17,11 +17,12 @@ from internship_post_app.views import (InternshipPostViewSet, InternshipApplicat
 from announcement_app.views import AnnouncementViewSet
 from questions_app.views import (QuestionsViewSet, MultipleChoicesViewSet,
 ApplicantAnswerViewSet, )
-from cv_app.views import PersonalInformationViewSet
+from cv_app.views import PersonalInformationViewSet, EducationInformationViewSet
 
 router = routers.DefaultRouter()
 
 router.register('cvs_personal_informations', PersonalInformationViewSet, 'cvs_personal_informations')
+router.register('cvs_education_informations', EducationInformationViewSet, 'cvs_education_informations')
 router.register('questions', QuestionsViewSet, 'questions')
 router.register('multiplechoices', MultipleChoicesViewSet, 'multiplechoices')
 router.register('user_profile', LoggedUserProfileViewSet, 'user_profile')
