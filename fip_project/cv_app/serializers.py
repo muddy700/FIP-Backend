@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import PersonalInformation, EducationInformation
+from .models import PersonalInformation, EducationInformation, ExperienceInformation
     
 class PersonalInformationSerializer(serializers.ModelSerializer):
     alumni_name = serializers.CharField(source="alumni.username", read_only=True)
@@ -18,4 +18,10 @@ class EducationInformationSerializer(serializers.ModelSerializer):
     alumni_name = serializers.CharField(source="alumni.username", read_only=True)
     class Meta:
         model = EducationInformation
+        fields = '__all__'
+
+class ExperienceInformationSerializer(serializers.ModelSerializer):
+    alumni_name = serializers.CharField(source="alumni.username", read_only=True)
+    class Meta:
+        model = ExperienceInformation
         fields = '__all__'

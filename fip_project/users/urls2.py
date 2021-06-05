@@ -19,12 +19,13 @@ from .api2 import ( StudentProfessionViewSet,
     InternshipApplicationByOrganizationViewSet,
     InterviewScheduleByPostViewSet, OrganizationContractsViewSet,
     SingleOrganizationProfileViewSet, CvPersonalInformationViewSet,
-    CvEducationInformationViewSet)
+    CvEducationInformationViewSet, CvExperienceInformationViewSet)
 
 router = routers.DefaultRouter()
 
-router.register(r'alumni/(?P<alumniId>\d+)/cv_personal_informations', CvPersonalInformationViewSet, 'alumni-cv_personal_informations')
-router.register(r'alumni/(?P<alumniId>\d+)/cv_education_informations', CvEducationInformationViewSet, 'alumni-cv_education_informations')
+router.register(r'alumni/(?P<alumniId>\d+)/cv_experience_informations', CvExperienceInformationViewSet, 'alumni-cv-experience-informations')
+router.register(r'alumni/(?P<alumniId>\d+)/cv_personal_informations', CvPersonalInformationViewSet, 'alumni-cv-personal-informations')
+router.register(r'alumni/(?P<alumniId>\d+)/cv_education_informations', CvEducationInformationViewSet, 'alumni-cv-education-informations')
 router.register(r'post/(?P<postId>\d+)/schedule', InterviewScheduleByPostViewSet, 'post-schedule')
 router.register(r'profession/(?P<professionId>\d+)/questions', QuestionsByProfessionsViewSet, 'profession_questions')
 router.register(r'alumni/(?P<alumniId>\d+)/post/(?P<postId>\d+)/marks', ApplicantMarksViewSet, 'alumni-marks')

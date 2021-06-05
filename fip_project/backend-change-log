@@ -12,7 +12,12 @@ Done
     3/6/2021
 1. Edited date_created to date_added in project Model
 2. Added CV_App And PersonalInformation Model In CV_App
-3. Added EducationInformation Model In CV_App With their API
+
+    4/6/2021
+1. Added EducationInformation Model In CV_App With Their API
+
+    5/6/2021
+1. Added ExperienceInformation Model In CV_App And Their API
 
 
 

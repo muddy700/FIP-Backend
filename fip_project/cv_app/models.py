@@ -24,3 +24,16 @@ class EducationInformation(models.Model):
 
     def __str__(self):
         return f'{self.alumni.username} Education Info'
+
+class ExperienceInformation(models.Model):
+    alumni = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cv_experience_owner")
+    company_name = models.CharField(max_length=100)
+    job_title = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+    start_date = models.CharField(max_length=20)
+    completion_date = models.CharField(max_length=20, blank=True)
+    is_current_job = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.alumni.username} Experience Info'

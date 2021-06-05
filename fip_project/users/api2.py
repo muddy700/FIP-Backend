@@ -22,10 +22,13 @@ from questions_app.models import (MultipleChoice, ApplicantScore,
 from questions_app.serializers import (MultipleChoiceSerializer, 
     ApplicantScoreSerializer, ApplicantAnswerSerializer,
     QuestionSerializer)
-from organization_address_app.serializers import ContractSerializer, OrganizationProfileSerializer
+from organization_address_app.serializers import (ContractSerializer, 
+    OrganizationProfileSerializer)
 from organization_address_app.models import Contract, OrganizationProfile
-from cv_app.serializers import PersonalInformationSerializer, EducationInformationSerializer
-from cv_app.models import PersonalInformation, EducationInformation
+from cv_app.serializers import (PersonalInformationSerializer, 
+    EducationInformationSerializer, ExperienceInformationSerializer)
+from cv_app.models import (PersonalInformation, EducationInformation,
+    ExperienceInformation)
 
 class InterviewScheduleByPostViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = InterviewScheduleSerializer
@@ -237,6 +240,15 @@ class CvEducationInformationViewSet(viewsets.GenericViewSet, mixins.ListModelMix
     def get_queryset(self):
         alumni_id = self.kwargs.get('alumniId')
         return EducationInformation.objects.filter(alumni=alumni_id)
+
+class CvExperienceInformationViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = ExperienceInformationSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        alumni_id = self.kwargs.get('alumniId')
+        return ExperienceInformation.objects.filter(alumni=alumni_id)
 
 class SingleAlumniProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = AlumniProfileSerializer
