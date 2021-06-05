@@ -29,6 +29,8 @@ from cv_app.serializers import (PersonalInformationSerializer,
     EducationInformationSerializer, ExperienceInformationSerializer)
 from cv_app.models import (PersonalInformation, EducationInformation,
     ExperienceInformation)
+from certificate_app.models import Certificate
+from certificate_app.serializers import CertificateSerializer
 
 class InterviewScheduleByPostViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = InterviewScheduleSerializer
@@ -249,6 +251,15 @@ class CvExperienceInformationViewSet(viewsets.GenericViewSet, mixins.ListModelMi
     def get_queryset(self):
         alumni_id = self.kwargs.get('alumniId')
         return ExperienceInformation.objects.filter(alumni=alumni_id)
+
+class AlumniCertificatesViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = CertificateSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        alumni_id = self.kwargs.get('alumniId')
+        return Certificate.objects.filter(alumni=alumni_id)
 
 class SingleAlumniProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = AlumniProfileSerializer
