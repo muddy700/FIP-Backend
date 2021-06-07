@@ -2,7 +2,7 @@ from rest_framework import permissions
 from rest_framework import viewsets, mixins
 
 from student_profile_app.serializers import StudentProfessionSerializer, StudentProfileSerializer, FieldReportSerializer
-from alumni_profile_app.serializers import AlumniProfileSerializer, AlumniProfessionSerializer
+from alumni_profile_app.serializers import AlumniProfileSerializer, AlumniProfessionSerializer, PublishedAlumniSerializer
 from student_profile_app.models import StudentProfession, StudentProfile, FieldReport
 from alumni_profile_app.models import AlumniProfile, AlumniProfession
 from program_app.serializers import ProgramSerializer
@@ -88,7 +88,7 @@ class ProjectsByMemberViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mi
     def get_queryset(self):
         memberId = self.kwargs.get('memberId')
         return ProjectMember.objects.filter(member=memberId)
-        
+
 class ProjectMembersViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = ProjectMemberSerializer
     permission_classes = [
@@ -224,6 +224,14 @@ class AlumniProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mi
     def get_queryset(self):
         alumni_id = self.kwargs.get('alumniId')
         return AlumniProfession.objects.filter(alumni=alumni_id)
+
+class PubllishedAlumniViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = PublishedAlumniSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        return AlumniProfile.objects.filter(is_public=True)
 
 class CvPersonalInformationViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = PersonalInformationSerializer

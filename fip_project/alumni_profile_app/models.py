@@ -11,6 +11,8 @@ class AlumniProfile(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     is_taken = models.BooleanField(default=False)
     organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_organization_id")
+    is_public = models.BooleanField(default=False)
+    gpa = models.FloatField(blank=True)
 
     def __str__(self):
         return f'{self.alumni.username} Profile'

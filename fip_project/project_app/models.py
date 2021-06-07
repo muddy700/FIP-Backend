@@ -19,4 +19,4 @@ class ProjectMember(models.Model):
     member = models.ForeignKey(User, on_delete=models.CASCADE, related_name="project_member")
 
     def __str__(self):
-        return f'{self.project.title } Member'
+        return f'{self.member.username } Member'
