@@ -4,8 +4,8 @@ from profession_app.models import Profession
 
 class OrganizationProfile(models.Model):
     organization_id = models.OneToOneField(User, on_delete=models.CASCADE)
-    box_address = models.CharField(max_length=100)
-    organization_description = models.CharField(max_length=1000, default='')
+    box_address = models.CharField(max_length=100, blank=True)
+    organization_description = models.CharField(max_length=1000, blank=True)
 
     def __str__(self):
         return f'{self.organization_id.username } Profile'
