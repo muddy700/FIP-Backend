@@ -405,3 +405,18 @@ class AlumniByStatusViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixi
     def get_queryset(self):
         status = self.kwargs.get('status')
         return AlumniProfile.objects.filter(is_active=status)
+
+
+     
+# class AlumniInvitationViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+#     serializer_class = InvitationSerializer
+#     permission_classes = [
+#         permissions.IsAuthenticated ]
+
+#     def get_queryset(self):
+#         alumni_id = self.kwargs.get('alumniId')
+#         return Invitation.objects.filter(alumni= alumni_id)
+
+
+
+        

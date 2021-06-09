@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions, viewsets
-from .models import OrganizationProfile, Contract, Rating
-from .serializers import OrganizationProfileSerializer, ContractSerializer, RatingSerializer
+from .models import Invitations, OrganizationProfile, Contract, Rating
+from .serializers import InvitationsSerializer, OrganizationProfileSerializer, ContractSerializer, RatingSerializer
 
 class OrganizationProfileViewSet(viewsets.ModelViewSet):
     queryset = OrganizationProfile.objects.all()
@@ -23,5 +23,11 @@ class RatingViewSet(viewsets.ModelViewSet):
         permissions.IsAuthenticated,
     ]
     serializer_class = RatingSerializer
+class InvitationsViewSet(viewsets.ModelViewSet):
+    queryset = Invitations.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    serializer_class = InvitationsSerializer
 
    

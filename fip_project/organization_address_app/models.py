@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields import CharField
 from profession_app.models import Profession
 
 class OrganizationProfile(models.Model):
@@ -27,3 +28,13 @@ class Rating(models.Model):
 
     def __str__(self):
         return f'{self.alumni.username } Rating'
+
+class Invitations(models.Model):
+    alumni = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_invited")
+    organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="inviting_organization")
+    invitation_message = models.CharField(max_length=1000, blank= True)
+    rejection_message= models.CharField(max_length=1000, blank=True)
+    status= models.CharField(max_length=50, default='received' )    
+
+    def __str__(self):
+        return f'{self.alumni.username}  Invitation' 

@@ -1,4 +1,4 @@
-from .models import OrganizationProfile, Contract, Rating
+from .models import Invitations, OrganizationProfile, Contract, Rating, Invitations
 from rest_framework import serializers
 
 class OrganizationProfileSerializer(serializers.ModelSerializer):
@@ -24,4 +24,12 @@ class RatingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Rating
+        fields = '__all__' 
+
+class InvitationsSerializer(serializers.ModelSerializer):
+    organization_name = serializers.CharField(source="organization.username", read_only=True)
+    alumni_name = serializers.CharField(source="alumni.username", read_only=True)
+
+    class Meta:
+        model = Invitations
         fields = '__all__' 

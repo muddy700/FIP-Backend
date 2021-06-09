@@ -6,7 +6,7 @@ from project_app.views import ProjectViewSet, ProjectMemberViewSet
 from profession_app.views import ProfessionViewSet
 from certificate_app.views import CertificateViewSet
 from department_app.views import DepartmentViewSet
-from organization_address_app.views import OrganizationProfileViewSet, ContractViewSet, RatingViewSet
+from organization_address_app.views import OrganizationProfileViewSet, ContractViewSet, RatingViewSet, InvitationsViewSet
 from field_supervisor_app.views import FieldSupervisorProfileViewSet
 from student_profile_app.views import StudentProfileViewSet, StudentsProfessionsViewSet, FieldReportViewSet
 from alumni_profile_app.views import AlumniProfileViewSet, AlumniProfessionViewSet
@@ -56,6 +56,7 @@ router.register('interview_schedules', InterviewScheduleViewSet, 'interview_sche
 router.register('internship_applications', InternshipApplicationViewSet, 'internship_applications')
 router.register('internship_applications_status', InternshipApplicationStatusViewSet, 'internship_applications_status')
 router.register('applicant_levels', ApplicantLevelViewSet, 'applicant_levels')
+router.register('alumni_invitations', InvitationsViewSet, 'alumni_invitation')
 
 
 urlpatterns = router.urls
