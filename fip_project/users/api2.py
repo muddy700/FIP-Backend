@@ -23,8 +23,8 @@ from questions_app.serializers import (MultipleChoiceSerializer,
     ApplicantScoreSerializer, ApplicantAnswerSerializer,
     QuestionSerializer)
 from organization_address_app.serializers import (ContractSerializer, 
-    OrganizationProfileSerializer)
-from organization_address_app.models import Contract, OrganizationProfile
+    OrganizationProfileSerializer, InvitationsSerializer)
+from organization_address_app.models import Contract, OrganizationProfile, Invitations
 from cv_app.serializers import (PersonalInformationSerializer, 
     EducationInformationSerializer, ExperienceInformationSerializer)
 from cv_app.models import (PersonalInformation, EducationInformation,
@@ -408,14 +408,24 @@ class AlumniByStatusViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixi
 
 
      
-# class AlumniInvitationViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
-#     serializer_class = InvitationSerializer
-#     permission_classes = [
-#         permissions.IsAuthenticated ]
+class AlumniInvitationsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = InvitationsSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
 
-#     def get_queryset(self):
-#         alumni_id = self.kwargs.get('alumniId')
-#         return Invitation.objects.filter(alumni= alumni_id)
+    def get_queryset(self):
+        alumni_id = self.kwargs.get('alumniId')
+        return Invitations.objects.filter(alumni=alumni_id)
+
+
+class OrganizationInvitationsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = InvitationsSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        organization_id = self.kwargs.get('organizationId')
+        return Invitations.objects.filter(organization=organization_id)
 
 
 

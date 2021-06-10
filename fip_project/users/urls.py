@@ -56,7 +56,7 @@ router.register('interview_schedules', InterviewScheduleViewSet, 'interview_sche
 router.register('internship_applications', InternshipApplicationViewSet, 'internship_applications')
 router.register('internship_applications_status', InternshipApplicationStatusViewSet, 'internship_applications_status')
 router.register('applicant_levels', ApplicantLevelViewSet, 'applicant_levels')
-router.register('alumni_invitations', InvitationsViewSet, 'alumni_invitation')
+router.register('job_invitations', InvitationsViewSet, 'alumni_invitation')
 
 
 urlpatterns = router.urls

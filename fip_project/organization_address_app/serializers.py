@@ -1,4 +1,4 @@
-from .models import Invitations, OrganizationProfile, Contract, Rating, Invitations
+from .models import OrganizationProfile, Contract, Rating, Invitations
 from rest_framework import serializers
 
 class OrganizationProfileSerializer(serializers.ModelSerializer):

@@ -33,8 +33,10 @@ class Invitations(models.Model):
     alumni = models.ForeignKey(User, on_delete=models.CASCADE, related_name="alumni_invited")
     organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="inviting_organization")
     invitation_message = models.CharField(max_length=1000, blank= True)
-    rejection_message= models.CharField(max_length=1000, blank=True)
-    status= models.CharField(max_length=50, default='received' )    
+    rejection_message = models.CharField(max_length=1000, blank=True)
+    status = models.CharField(max_length=50, default='received' ) 
+    has_reported = models.BooleanField(default=False)   
+    has_released = models.BooleanField(default=False)   
 
     def __str__(self):
         return f'{self.alumni.username}  Invitation' 

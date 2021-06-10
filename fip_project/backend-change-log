@@ -33,6 +33,10 @@ Done
     9/6/2021
 1. Added Invitation Table 
 
+    10/6/2021
+1. Added API For Retrieving Invitations By Individual OrganizationId And AlumniId
+2. Added Some Fields In Invitation Model(ie.. has_released, has_reported)
+
 
 Planned
 1. Change some filters from returning array into get_obj_or_404

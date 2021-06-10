@@ -23,6 +23,7 @@ class RatingViewSet(viewsets.ModelViewSet):
         permissions.IsAuthenticated,
     ]
     serializer_class = RatingSerializer
+    
 class InvitationsViewSet(viewsets.ModelViewSet):
     queryset = Invitations.objects.all()
     permission_classes = [
