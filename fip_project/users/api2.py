@@ -1,6 +1,8 @@
 from rest_framework import permissions
 from rest_framework import viewsets, mixins
 
+from staff_profile_app.models import StaffProfile
+from staff_profile_app.serializers import StaffProfileSerializer
 from student_profile_app.serializers import StudentProfessionSerializer, StudentProfileSerializer, FieldReportSerializer
 from alumni_profile_app.serializers import AlumniProfileSerializer, AlumniProfessionSerializer, PublishedAlumniSerializer
 from student_profile_app.models import StudentProfession, StudentProfile, FieldReport
@@ -277,6 +279,15 @@ class SingleAlumniProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
     def get_queryset(self):
         alumni_id = self.kwargs.get('alumniId')
         return AlumniProfile.objects.filter(alumni=alumni_id)
+
+class SingleStaffProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = StaffProfileSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        staff_id = self.kwargs.get('staffId')
+        return StaffProfile.objects.filter(staff=staff_id)
 
 class OrganizationContractsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = ContractSerializer

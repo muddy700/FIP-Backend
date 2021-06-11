@@ -37,6 +37,9 @@ Done
 1. Added API For Retrieving Invitations By Individual OrganizationId And AlumniId
 2. Added Some Fields In Invitation Model(ie.. has_released, has_reported)
 
+    11/6/2021
+1. Added API For Getting Single Staff Profile
+
 
 Planned
 1. Change some filters from returning array into get_obj_or_404
