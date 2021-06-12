@@ -9,8 +9,8 @@ from student_profile_app.models import StudentProfession, StudentProfile, FieldR
 from alumni_profile_app.models import AlumniProfile, AlumniProfession
 from program_app.serializers import ProgramSerializer
 from program_app.models import Program
-from field_post_app.models import FieldApplication, FieldPost, FieldPostProfession
-from field_post_app.serializers import FieldPostProfessionSerializer, FieldApplicationSerializer, FieldPostSerializer
+from field_post_app.models import FieldApplication, FieldPost, FieldPostProfession, FieldPostProgram
+from field_post_app.serializers import FieldPostProfessionSerializer, FieldApplicationSerializer, FieldPostSerializer, FieldPostProgramSerializer
 from internship_post_app.models import InternshipApplication, InternshipPost, InterviewSchedule
 from internship_post_app.serializers import InternshipPostSerializer, InternshipApplicationSerializer, InterviewScheduleSerializer
 from .models import UserProfile
@@ -344,7 +344,7 @@ class FieldPostByOrganizationViewSet(viewsets.GenericViewSet, mixins.ListModelMi
         organization_id = self.kwargs.get('organizationId')
         return FieldPost.objects.filter(organization=organization_id)
 
-class FieldPostProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+class FieldProfessionByPostViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = FieldPostProfessionSerializer
     permission_classes = [
         permissions.IsAuthenticated ]
@@ -352,6 +352,15 @@ class FieldPostProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
     def get_queryset(self):
         post_id = self.kwargs.get('postId')
         return FieldPostProfession.objects.filter(post=post_id)
+
+class FieldProgramByPostViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = FieldPostProgramSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        post_id = self.kwargs.get('postId')
+        return FieldPostProgram.objects.filter(post=post_id)
 
 class FieldApplicationByPostViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = FieldApplicationSerializer

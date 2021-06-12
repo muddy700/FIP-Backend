@@ -11,7 +11,7 @@ from field_supervisor_app.views import FieldSupervisorProfileViewSet
 from student_profile_app.views import StudentProfileViewSet, StudentsProfessionsViewSet, FieldReportViewSet
 from alumni_profile_app.views import AlumniProfileViewSet, AlumniProfessionViewSet
 from staff_profile_app.views import StaffProfileViewSet
-from field_post_app.views import FieldPostViewSet, FieldApplicationViewSet, FieldPostProfessionViewSet
+from field_post_app.views import FieldPostViewSet, FieldApplicationViewSet, FieldPostProfessionViewSet, FieldPostProgramViewSet
 from internship_post_app.views import (InternshipPostViewSet, InternshipApplicationViewSet,
  InternshipApplicationStatusViewSet, ApplicantLevelViewSet, InterviewScheduleViewSet)
 from announcement_app.views import AnnouncementViewSet
@@ -50,6 +50,7 @@ router.register('alumni_ratings', RatingViewSet, 'alumni_ratings')
 router.register('staffs_profiles', StaffProfileViewSet, 'staffs_profiles')
 router.register('field_posts', FieldPostViewSet, 'field_posts')
 router.register('field_post_professions', FieldPostProfessionViewSet, 'field_post_professions')
+router.register('field_post_programs', FieldPostProgramViewSet, 'field_post_programs')
 router.register('field_applications', FieldApplicationViewSet, 'field_applications')
 router.register('internship_posts', InternshipPostViewSet, 'internship_posts')
 router.register('interview_schedules', InterviewScheduleViewSet, 'interview_schedules')

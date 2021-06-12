@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .api2 import ( StudentProfessionViewSet, 
+from .api2 import ( FieldProgramByPostViewSet, StudentProfessionViewSet, 
     ProgramsByDepartmentViewSet, StudentsByProgramViewSet, 
     StudentsByDepartmentViewSet, StudentsByAcademicSpervisorViewSet,
     StudentsByStatusViewSet, StudentsByFieldSpervisorViewSet,
@@ -7,7 +7,7 @@ from .api2 import ( StudentProfessionViewSet,
     AlumniByOrganizationViewSet, StudentsByOrganizationViewSet,
     AlumniByCompletionYearViewSet, AlumniByDegreeProgramViewSet,
     AlumniByDepartmentViewSet, FieldPostByOrganizationViewSet,
-    FieldApplicationByPostViewSet, FieldPostProfessionViewSet,
+    FieldApplicationByPostViewSet, FieldProfessionByPostViewSet,
     FieldApplicationByStudentViewSet, InternshipPostByOrganizationViewSet,
     InternshipApplicationByPostViewSet,
     InternshipApplicationByAlumniViewSet, StudentReportViewSet,
@@ -22,7 +22,7 @@ from .api2 import ( StudentProfessionViewSet,
     CvEducationInformationViewSet, CvExperienceInformationViewSet,
     AlumniCertificatesViewSet, PubllishedAlumniViewSet,
     AlumniInvitationsViewSet, OrganizationInvitationsViewSet,
-    SingleStaffProfileViewSet
+    SingleStaffProfileViewSet, 
     )
 
 router = routers.DefaultRouter()
@@ -46,7 +46,8 @@ router.register(r'student/(?P<studentId>\d+)/report', StudentReportViewSet, 'stu
 router.register(r'alumni/(?P<alumniId>\d+)/professions', AlumniProfessionViewSet, 'alumni-professions')
 router.register(r'alumni/(?P<alumniId>\d+)/profile', SingleAlumniProfileViewSet, 'alumni-profile')
 router.register(r'staff/(?P<staffId>\d+)/profile', SingleStaffProfileViewSet, 'staff-profile')
-router.register(r'field_post/(?P<postId>\d+)/professions', FieldPostProfessionViewSet, 'field_post-professions')
+router.register(r'field_post/(?P<postId>\d+)/professions', FieldProfessionByPostViewSet, 'field_post-professions')
+router.register(r'field_post/(?P<postId>\d+)/programs', FieldProgramByPostViewSet, 'field_post-programs')
 router.register(r'department/(?P<departmentId>\d+)/programs', ProgramsByDepartmentViewSet, 'department-programs')
 router.register(r'alumni_by_department/(?P<departmentId>\d+)', AlumniByDepartmentViewSet, 'alumni_by_department')
 router.register(r'organization/(?P<organizationId>\d+)/students', StudentsByOrganizationViewSet, 'organization-students')
