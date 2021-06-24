@@ -44,6 +44,9 @@ Done
 1. Added FieldPostProgram Model And Edited Some Other Fields In FieldPost Model
 2. Added Reference-Number In Field Post
 
+    24/6/2021
+1. Added Some API For Field Post management 
+
 
 Planned
 1. Change some filters from returning array into get_obj_or_404

@@ -217,6 +217,22 @@ class StudentsByYearOfStudyViewSet(viewsets.GenericViewSet, mixins.ListModelMixi
         year = self.kwargs.get('year')
         return StudentProfile.objects.filter(year_of_study=year)
 
+class ReportedStudentsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = FieldApplicationSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        return FieldApplication.objects.filter(has_reported=True)
+
+class SingleStudentProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = StudentProfileSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        return StudentProfile.objects.filter(student=self.request.user)
+
 
 class AlumniProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = AlumniProfessionSerializer

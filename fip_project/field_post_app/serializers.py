@@ -10,7 +10,10 @@ class FieldPostSerializer(serializers.ModelSerializer):
 
 class FieldApplicationSerializer(serializers.ModelSerializer):
     registration_number = serializers.CharField(source="student.username", read_only=True)
+    first_name = serializers.CharField(source="student.first_name", read_only=True)
+    last_name = serializers.CharField(source="student.last_name", read_only=True)
     post_reference_number = serializers.CharField(source="post.reference_number", read_only=True)
+    organization = serializers.IntegerField(source="post.organization_id", read_only=True)
 
     class Meta:
         model = FieldApplication

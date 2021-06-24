@@ -8,6 +8,7 @@ class FieldPost(models.Model):
     organization = models.ForeignKey(User, on_delete=models.CASCADE)
     post_description = models.CharField(max_length=500, blank=True)
     post_capacity = models.IntegerField(null=True, blank=True)
+    applied_chances = models.IntegerField(default=0)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     expiry_date = models.DateField()
@@ -35,6 +36,8 @@ class FieldPostProgram(models.Model):
 class FieldApplication(models.Model):
     post = models.ForeignKey(FieldPost, on_delete=models.CASCADE, related_name="field_application_post_id")
     student = models.ForeignKey(User, on_delete=models.CASCADE, related_name="student_application_id")
+    has_reported = models.BooleanField(default=False)
+    has_released = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.post.reference_number } Application' 
