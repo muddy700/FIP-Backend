@@ -231,7 +231,8 @@ class SingleStudentProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin
         permissions.IsAuthenticated ]
 
     def get_queryset(self):
-        return StudentProfile.objects.filter(student=self.request.user)
+        student_id = self.kwargs.get('studentId')
+        return StudentProfile.objects.filter(student=student_id)
 
 
 class AlumniProfessionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):

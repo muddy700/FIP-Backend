@@ -11,11 +11,14 @@ class StudentProfile(models.Model):
     year_of_study = models.CharField(max_length=100)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     student = models.OneToOneField(User, on_delete=models.CASCADE, related_name="student_id")
-    organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="organization_id")
-    profile_image = models.ImageField(upload_to='images/', blank=True)
-    field_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="field_supervisor")
+    organization = models.ForeignKey(User, on_delete=models.CASCADE, default=38, related_name="organization_id")
+    field_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, default=38, related_name="field_supervisor")
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    academic_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="academic_supervisor")
+    academic_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, default=38, related_name="academic_supervisor")
+    has_reported = models.BooleanField(default=False)
+    date_reported = models.DateTimeField(blank=True, null=True)
+    field_report = models.FileField(upload_to='raw/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+
 
     def __str__(self):
         return f'{self.student.username } Profile'
