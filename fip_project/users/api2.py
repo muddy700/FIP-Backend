@@ -109,6 +109,15 @@ class AnnouncementsByDesignationsViewSet(viewsets.GenericViewSet, mixins.ListMod
         designation_id = self.kwargs.get('designationId')
         return Announcement.objects.filter(destination=designation_id)
 
+class UsersProfilesByDesignationIdViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = UserProfileSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        designation_id = self.kwargs.get('designationId')
+        return UserProfile.objects.filter(designation=designation_id)
+
 class SingleUserProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = UserProfileSerializer
     permission_classes = [
@@ -224,6 +233,14 @@ class ReportedStudentsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mi
 
     def get_queryset(self):
         return FieldApplication.objects.filter(has_reported=True)
+
+class ReportedStudentsProfilesViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = StudentProfileSerializer
+    permission_classes = [
+        permissions.IsAuthenticated ]
+
+    def get_queryset(self):
+        return StudentProfile.objects.filter(has_reported=True)
 
 class SingleStudentProfileViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = StudentProfileSerializer

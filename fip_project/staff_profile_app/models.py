@@ -8,4 +8,4 @@ class StaffProfile(models.Model):
     staff = models.OneToOneField(User, on_delete=models.CASCADE, related_name="staff_id")
 
     def __str__(self):
-        return f'{self.staff_id.username } Profile'
+        return f'{self.staff.username } Profile'

@@ -23,14 +23,17 @@ from .api2 import ( FieldProgramByPostViewSet, StudentProfessionViewSet,
     AlumniCertificatesViewSet, PubllishedAlumniViewSet,
     AlumniInvitationsViewSet, OrganizationInvitationsViewSet,
     SingleStaffProfileViewSet, SingleStudentProfileViewSet,
-    ReportedStudentsViewSet
+    ReportedStudentsViewSet, ReportedStudentsProfilesViewSet,
+    UsersProfilesByDesignationIdViewSet
     )
 
 router = routers.DefaultRouter()
 
 router.register('published_alumni', PubllishedAlumniViewSet, 'published_alumni')
 router.register('reported_students', ReportedStudentsViewSet, 'reported_students')
+router.register('reported_students_profiles', ReportedStudentsProfilesViewSet, 'reported_students_profiles')
 # router.register('single_student_profile', SingleStudentProfileViewSet, 'single_student_profile')
+router.register(r'designation/(?P<designationId>\d+)/users_profiles', UsersProfilesByDesignationIdViewSet, 'designation-users-profiles')
 router.register(r'student/(?P<studentId>\d+)/profile_info', SingleStudentProfileViewSet, 'student-profile-info')
 router.register(r'alumni/(?P<alumniId>\d+)/certificates', AlumniCertificatesViewSet, 'alumni-certificates')
 router.register(r'alumni/(?P<alumniId>\d+)/cv_experience_informations', CvExperienceInformationViewSet, 'alumni-cv-experience-informations')
