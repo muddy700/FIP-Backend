@@ -47,6 +47,9 @@ Done
     24/6/2021
 1. Added Some API For Field Post management 
 
+    26/6/2021
+1. Added Some Fields In Student Model 
+
 
 Planned
 1. Change some filters from returning array into get_obj_or_404

@@ -18,6 +18,11 @@ class StudentProfile(models.Model):
     has_reported = models.BooleanField(default=False)
     date_reported = models.DateTimeField(blank=True, null=True)
     field_report = models.FileField(upload_to='raw/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    report_marks = models.FloatField(blank=True, null=True)
+    academic_supervisor_marks = models.FloatField(blank=True, null=True)
+    field_supervisor_marks = models.FloatField(blank=True, null=True)
+    average_marks = models.FloatField(blank=True, null=True)
+    marks_grade = models.CharField(max_length=2, blank=True, null=True)
 
 
     def __str__(self):
