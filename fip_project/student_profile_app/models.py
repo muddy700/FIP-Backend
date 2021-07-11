@@ -10,19 +10,20 @@ class StudentProfile(models.Model):
     phone_number = models.CharField(max_length=100)
     year_of_study = models.CharField(max_length=100)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
     student = models.OneToOneField(User, on_delete=models.CASCADE, related_name="student_id")
     organization = models.ForeignKey(User, on_delete=models.CASCADE, default=38, related_name="organization_id")
     field_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, default=38, related_name="field_supervisor")
-    department = models.ForeignKey(Department, on_delete=models.CASCADE)
     academic_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, default=38, related_name="academic_supervisor")
     has_reported = models.BooleanField(default=False)
     date_reported = models.DateTimeField(blank=True, null=True)
-    field_report = models.FileField(upload_to='raw/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    field_report = models.FileField(upload_to='field_report/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
     report_marks = models.FloatField(blank=True, null=True)
     academic_supervisor_marks = models.FloatField(blank=True, null=True)
     field_supervisor_marks = models.FloatField(blank=True, null=True)
     average_marks = models.FloatField(blank=True, null=True)
     marks_grade = models.CharField(max_length=2, blank=True, null=True)
+    cancellation_count = models.IntegerField(blank=True, null=True)
 
 
     def __str__(self):

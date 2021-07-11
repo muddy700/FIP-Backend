@@ -15,7 +15,7 @@ class ProjectMemberSerializer(serializers.ModelSerializer):
     project_report = serializers.CharField(source="project.report", read_only=True)
     project_date_added = serializers.CharField(source="project.date_added", read_only=True)
     project_date_update = serializers.CharField(source="project.date_updated", read_only=True)
-    project_recommendation_status = serializers.BooleanField(source="project.recommendation_status", read_only=True)
+    project_recommendation_status = serializers.CharField(source="project.recommendation_status", read_only=True)
     # project_data = ProjectSerializer()
 
     class Meta:

@@ -6,7 +6,7 @@ class Certificate(models.Model):
     alumni = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     authority = models.CharField(max_length=100, blank=True)
-    certificate_file = models.FileField(upload_to='raw/', blank=True, storage=RawMediaCloudinaryStorage())
+    certificate_file = models.FileField(upload_to='certificates/', blank=True, storage=RawMediaCloudinaryStorage())
 
     def __str__(self):
         return f'{self.alumni.username}  Certificate'

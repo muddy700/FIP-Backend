@@ -7,6 +7,7 @@ class InternshipPost(models.Model):
     reference_number = models.CharField(max_length=100, default="FIP/2021/P000", unique=True)
     organization = models.ForeignKey(User, on_delete=models.CASCADE)
     post_capacity = models.IntegerField()
+    minimum_gpa = models.FloatField(blank=True, null=True)
     post_description = models.CharField(max_length=300)
     date_created = models.DateField(auto_now_add=True)
     date_updated = models.DateField(auto_now=True)

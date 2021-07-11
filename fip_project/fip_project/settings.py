@@ -1,13 +1,14 @@
 from pathlib import Path
 from datetime import timedelta
 import environ
+import django_heroku
 import os
 
 # Initialise environment variables
 env = environ.Env()
 environ.Env.read_env()
 
-REST_KNOX = {'TOKEN_TTL': timedelta(weeks=2)}
+REST_KNOX = {'TOKEN_TTL': timedelta(hours=3)}
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY =  env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (env('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['fip-backend.herokuapp.com', 'localhost']
 
 # Application definition
 
@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework_swagger',
+    'drf_yasg',
     'users',
     'cv_app',
     'questions_app',
@@ -157,10 +159,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/media/'  # or any prefix you choose
+MEDIA_URL = '/FIPMS/'  # or any prefix you choose
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+django_heroku.settings(locals())

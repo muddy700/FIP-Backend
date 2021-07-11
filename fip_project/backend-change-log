@@ -47,7 +47,13 @@ Done
     24/6/2021
 1. Added Some API For Field Post management 
 
-    26/6/2021
+    4/7/2021
+1. Deployed Backend Into Heroku
+
+    5/7/2021
+1. Separated Storage Folders In Cloudinary. ie. FIPMS/profile_images, FIPMS/field_reports...
+    
+    
 1. Added Some Fields In Student Model 
 
 
@@ -55,3 +61,4 @@ Planned
 1. Change some filters from returning array into get_obj_or_404
 2. Change Destination Folder In Cloudinary ie /FIP/profile_images, /FIP/certificates
 3. Create API Which Will Return All Informations Of CV From All Models
+4. Remove Pwd In Organization-Profile-Serializer

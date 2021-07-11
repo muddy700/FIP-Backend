@@ -6,10 +6,10 @@ class Project(models.Model):
     title = models.CharField(max_length=100, blank=True)
     year = models.CharField(max_length=10, blank=True)
     sponsor = models.CharField(max_length=100, blank=True)
-    report = models.FileField(upload_to='raw/', blank=True, storage=RawMediaCloudinaryStorage())
+    report = models.FileField(upload_to='project_reports/', blank=True, storage=RawMediaCloudinaryStorage())
     date_added = models.DateTimeField(auto_now_add=True, blank=True)
     date_updated = models.DateTimeField(auto_now=True, blank=True)
-    recommendation_status = models.BooleanField(default=False)
+    recommendation_status = models.CharField(max_length=20, default='pending')
 
     def __str__(self):
         return self.title

@@ -9,7 +9,7 @@ class Announcement(models.Model):
     description = models.CharField(max_length=500)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    closing_date = models.CharField(max_length=100, blank=True)
+    closing_date = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return self.title
