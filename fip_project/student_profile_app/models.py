@@ -6,16 +6,16 @@ from cloudinary_storage.storage import RawMediaCloudinaryStorage
 from django.db import models
 
 class StudentProfile(models.Model):
-    student_status = models.BooleanField()
-    phone_number = models.CharField(max_length=100)
-    year_of_study = models.CharField(max_length=100)
+    student_status = models.BooleanField(blank=True, null=True)
+    phone_number = models.CharField(max_length=100, blank=True, null=True)
+    year_of_study = models.CharField(max_length=100, blank=True, null=True)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     student = models.OneToOneField(User, on_delete=models.CASCADE, related_name="student_id")
     organization = models.ForeignKey(User, on_delete=models.CASCADE, default=38, related_name="organization_id")
     field_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, default=38, related_name="field_supervisor")
     academic_supervisor = models.ForeignKey(User, on_delete=models.CASCADE, default=38, related_name="academic_supervisor")
-    has_reported = models.BooleanField(default=False)
+    has_reported = models.BooleanField(default=False, blank=True, null=True)
     date_reported = models.DateTimeField(blank=True, null=True)
     field_report = models.FileField(upload_to='field_report/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
     report_marks = models.FloatField(blank=True, null=True)
@@ -24,6 +24,11 @@ class StudentProfile(models.Model):
     average_marks = models.FloatField(blank=True, null=True)
     marks_grade = models.CharField(max_length=2, blank=True, null=True)
     cancellation_count = models.IntegerField(blank=True, null=True)
+    week_1_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    week_2_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    week_3_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    week_4_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    week_5_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
 
 
     def __str__(self):
