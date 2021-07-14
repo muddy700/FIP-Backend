@@ -42,6 +42,7 @@ class NotificationsSerializer(serializers.ModelSerializer):
         fields = '__all__' 
 
 class NotificationViewsSerializer(serializers.ModelSerializer):
+    organization_name = serializers.CharField(source="organization.last_name", read_only=True)
     class Meta:
         model = NotificationView
         fields = '__all__' 

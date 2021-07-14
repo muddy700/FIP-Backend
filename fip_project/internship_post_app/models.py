@@ -8,7 +8,7 @@ class InternshipPost(models.Model):
     organization = models.ForeignKey(User, on_delete=models.CASCADE)
     post_capacity = models.IntegerField()
     minimum_gpa = models.FloatField(blank=True, null=True)
-    post_description = models.CharField(max_length=300)
+    post_description = models.CharField(max_length=3000)
     date_created = models.DateField(auto_now_add=True)
     date_updated = models.DateField(auto_now=True)
     expiry_date = models.DateField()
