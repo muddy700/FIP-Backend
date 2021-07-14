@@ -40,3 +40,20 @@ class Invitations(models.Model):
 
     def __str__(self):
         return f'{self.alumni.username}  Invitation' 
+
+class Notification(models.Model):
+    title = models.CharField(max_length=100, blank= True)
+    content = models.CharField(max_length=1000, blank= True)
+    date_created = models.DateField(auto_now_add=True)
+    date_updated = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.title 
+
+class NotificationView(models.Model):
+    organization = models.ForeignKey(User, on_delete=models.CASCADE, related_name="target_organization")
+    notification = models.ForeignKey(Notification, on_delete=models.CASCADE, related_name="viewed_notification")
+    date_created = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.notification.title} View'

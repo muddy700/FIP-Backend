@@ -6,7 +6,7 @@ from cloudinary_storage.storage import RawMediaCloudinaryStorage
 from django.db import models
 
 class StudentProfile(models.Model):
-    student_status = models.BooleanField(blank=True, null=True)
+    student_status = models.BooleanField(default=True, blank=True, null=True)
     phone_number = models.CharField(max_length=100, blank=True, null=True)
     year_of_study = models.CharField(max_length=100, blank=True, null=True)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)

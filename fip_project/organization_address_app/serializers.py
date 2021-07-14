@@ -1,4 +1,4 @@
-from .models import OrganizationProfile, Contract, Rating, Invitations
+from .models import OrganizationProfile, Contract, Rating, Invitations, Notification, NotificationView
 from rest_framework import serializers
 
 class OrganizationProfileSerializer(serializers.ModelSerializer):
@@ -34,4 +34,14 @@ class InvitationsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Invitations
+        fields = '__all__' 
+
+class NotificationsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = '__all__' 
+
+class NotificationViewsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NotificationView
         fields = '__all__' 

@@ -56,6 +56,9 @@ Done
     12/7/2021
 1. Added Logbook Fields In Student Model 
 
+    14/7/2021
+1. Added Notification and NotificationView Model 
+
 
 Planned
 1. Change some filters from returning array into get_obj_or_404
