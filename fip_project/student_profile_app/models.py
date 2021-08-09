@@ -8,7 +8,7 @@ from django.db import models
 class StudentProfile(models.Model):
     student_status = models.BooleanField(default=True, blank=True, null=True)
     phone_number = models.CharField(max_length=100, blank=True, null=True)
-    year_of_study = models.CharField(max_length=100, blank=True, null=True)
+    year_of_study = models.IntegerField(blank=True, null=True)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     student = models.OneToOneField(User, on_delete=models.CASCADE, related_name="student_id")
@@ -22,7 +22,7 @@ class StudentProfile(models.Model):
     academic_supervisor_marks = models.FloatField(blank=True, null=True)
     field_supervisor_marks = models.FloatField(blank=True, null=True)
     average_marks = models.FloatField(blank=True, null=True)
-    marks_grade = models.CharField(max_length=2, blank=True, null=True)
+    marks_grade = models.CharField(max_length=20, blank=True, null=True)
     cancellation_count = models.IntegerField(blank=True, null=True)
     week_1_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
     week_2_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())

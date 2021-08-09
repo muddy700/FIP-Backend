@@ -59,6 +59,9 @@ Done
     14/7/2021
 1. Added Notification and NotificationView Model 
 
+    9/8/2021
+1. Added Some Model-Properties ie, Organization-Region, and program-studying years 
+
 
 Planned
 1. Change some filters from returning array into get_obj_or_404
