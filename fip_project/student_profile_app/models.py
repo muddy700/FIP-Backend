@@ -29,6 +29,11 @@ class StudentProfile(models.Model):
     week_3_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
     week_4_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
     week_5_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    week_6_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    week_7_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    week_8_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    week_9_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
+    week_10_logbook = models.FileField(upload_to='logbook/', blank=True, null=True, storage=RawMediaCloudinaryStorage())
 
 
     def __str__(self):

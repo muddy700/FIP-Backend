@@ -62,6 +62,10 @@ Done
     9/8/2021
 1. Added Some Model-Properties ie, Organization-Region, and program-studying years 
 
+    15/8/2021
+1. Added FieldInfo Model. 
+2. Added Logbooks To 10 Weeks.
+
 
 Planned
 1. Change some filters from returning array into get_obj_or_404
