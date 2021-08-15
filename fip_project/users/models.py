@@ -12,3 +12,11 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+class FieldInfo(models.Model):
+    start_date = models.DateField(null=True, blank=True)
+    number_of_weeks = models.IntegerField(null=True, blank=True)
+    last_date_year_of_study_changed = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.number_of_weeks} Weeks Of IPT'

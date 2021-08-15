@@ -8,6 +8,7 @@ class StudentProfileSerializer(serializers.ModelSerializer):
     email = serializers.CharField(source="student.email", read_only=True)
     organization_name = serializers.CharField(source="organization.first_name", read_only=True)
     degree_program = serializers.CharField(source="program.program_name", read_only=True)
+    degree_program_years = serializers.IntegerField(source="program.program_duration_years", read_only=True)
     department_name = serializers.CharField(source="department.department_name", read_only=True)
     # profession_name = serializers.CharField(source="profession_id.profession_name", read_only=True)
     academic_supervisor_name = serializers.CharField(source="academic_supervisor.username", read_only=True)

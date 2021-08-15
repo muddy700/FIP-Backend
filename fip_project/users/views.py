@@ -2,12 +2,15 @@ from rest_framework import generics, permissions, viewsets
 from rest_framework.permissions import IsAuthenticated   
 from rest_framework.response import Response
 from knox.models import AuthToken
-from .serializers import UserSerializer, RegisterSerializer, UserProfileSerializer, ChangePasswordSerializer
+from .serializers import (
+    FieldInfoSerializer, UserSerializer, RegisterSerializer,
+     UserProfileSerializer, ChangePasswordSerializer,
+     FieldInfoSerializer)
 from django.contrib.auth import login
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import UserProfile, FieldInfo
 from rest_framework import status
 
 
@@ -57,6 +60,13 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         permissions.IsAuthenticated,
     ]
     serializer_class = UserProfileSerializer
+
+class FieldInfoViewSet(viewsets.ModelViewSet):
+    queryset = FieldInfo.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    serializer_class = FieldInfoSerializer
 
 class LoggedUserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects

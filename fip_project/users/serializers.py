@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import UserProfile, FieldInfo
     
 
 # User Serializer
@@ -32,6 +32,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
+        fields = '__all__'
+
+class FieldInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FieldInfo
         fields = '__all__'
 
 class ChangePasswordSerializer(serializers.Serializer):

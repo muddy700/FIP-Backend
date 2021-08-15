@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .views import UsersViewSet, UserProfileViewSet, LoggedUserProfileViewSet
+from .views import UsersViewSet, UserProfileViewSet, LoggedUserProfileViewSet, FieldInfoViewSet
 from designation.views import DesignationViewSet
 from program_app.views import ProgramViewSet
 from project_app.views import ProjectViewSet, ProjectMemberViewSet
@@ -22,6 +22,7 @@ ExperienceInformationViewSet)
 
 router = routers.DefaultRouter()
 
+router.register('field_info', FieldInfoViewSet, 'field_info')
 router.register('cvs_experience_informations', ExperienceInformationViewSet, 'cvs_experience_informations')
 router.register('cvs_personal_informations', PersonalInformationViewSet, 'cvs_personal_informations')
 router.register('cvs_education_informations', EducationInformationViewSet, 'cvs_education_informations')
